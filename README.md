@@ -1,0 +1,4 @@
+gpl
+===
+
+Game Programming Library
