@@ -39,9 +39,9 @@ Mande um email para 'libgpl@gmail.com' contendo um vídeo ou um link com imagens
 
 ## Como começar
   - Utilize o projeto base_2010 que esta na pasta 'projects', este projeto vem configurado para compilar seus projetos utilizado a GPL no Visual Studio.
-
+<!--
 Ainda não existe um plugin ou script para a criação de novos projetos, você sempre deve utilizar o projeto base para iniciar.
-
+-->
 
 ## Licença
 
