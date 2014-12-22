@@ -1,9 +1,4 @@
-GPL 2.0
-===
-
-Game Programming Library
-
-# Game Programming Library
+# Game Programming Library (GPL 2.0)
 
 A **GPL**, é uma biblioteca didática gratuíta para desenvolvimento de jogos 2D. O projeto preza pela facilidade de aprendizado e a simplicidade de desenvolvimento, tendo como missão ampliar a participação de mais pessoas na área de Jogos e Entretenimento Digital Interativo. Nossa visão é que todos devem ter a oportunidade de aprender a programar, de uma forma fácil e lúdica. Assim como o [code.org](http://code.org/), acreditamos que a ciência da computação e a programação de computadores deve ser parte do currículo educacional, ao lado de disciplinas como ciências, tecnologia, engenharia e matemática (STEM).
 
@@ -11,7 +6,7 @@ A GPL foi criada pelo **Prof. MSc. Luan Carlos Nesi** e é mantida de forma cola
 
 Escrita em C++, a GPL preza pela facilidade, provendo suporte à funcionalidades básicas de criação de jogos. Sua robustez advem de biblioteca [SFML](http://www.sfml-dev.org/), que sustenta sua base.
 
-/*## Características
+<!--## Características
 
   - Orientada a objetos
   - Nomenclatura padronizada (en)
@@ -40,7 +35,8 @@ Mande um email para 'libgpl@gmail.com' contendo um vídeo ou um link com imagens
 ## Instituições usando a GPL
 
   - [Universidade do Vale do Rio dos Sinos](http://www.unisinos.br) (Unisinos), no Rio Grande do Sul, nos cursos superiores de Jogos Digitais. 
-*/
+-->
+
 ## Como começar
   - Utilize o projeto base_2010 que esta na pasta 'projects', este projeto vem configurado para compilar seus projetos utilizado a GPL no Visual Studio.
 
@@ -49,4 +45,4 @@ Ainda não existe um plugin ou script para a criação de novos projetos, você 
 
 ## Licença
 
-  - Esta biblioteca é licenciada sobre o termos da [Creative Commings](https://creativecommons.org).
+  - Esta biblioteca é licenciada sobre o termos da [Creative Commons](https://creativecommons.org).
