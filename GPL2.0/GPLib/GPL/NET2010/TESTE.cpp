@@ -26,19 +26,22 @@
 #endif	
 
 #include "../../include/gpl.h"
-#include "../../include/Input.h"
-#include "../../include/Gizmos.h"
+#include "../../include/Game.h"
+#include "../../include/GPL.h"
 /*
 //////////////////////////////////////////////////////////////
 //							STATUS							//
 //	Input			Falta Joystick
 //	Gizmos			OK
 //	Text
+//	Panel			Colocar como static/singleton
 //	Debug			
+//	Inspector		mostra informações sobre um objeto
 //	Sound
 //	Music
 //	Scene
 //	GPL
+//	Métodos de retorno como const, para nao serem mudaddos.
 //////////////////////////////////////////////////////////////
 // Obs.: Passar por ponteiro a sf::RenderWindow *window para
 //		 as classes que necessitam
@@ -48,28 +51,6 @@ void main()
 {
 	// Seção de carregamento de assets
 
-	sf::RenderWindow *window = gplInit(800,600,"Minha Janela",true,false);	// Inicializa a biblioteca
-
-	Input input;
-	Gizmos gizmos(window);
-	
-	while (!input.isKeyHeld(KEY::Escape))		// Loop principal do jogo
-    {
-		if(input.isKeyDown(KEY::Left))
-		{
-			cout << "LEFT DOWN" << endl << endl;
-		}
-		if(input.isKeyUp(KEY::Right))
-		{
-			cout << "RIGHT UP" << endl << endl;
-		}
-		if(input.isKeyHeld(KEY::Up))
-		{
-			cout << "UP HELD" << endl << endl;
-		}
-		gizmos.line(100,100,200);
-		// Lógica do Jogo
-		
-		gplFlush();		// Atualiza a tela - última coisa a ser chamada dentro do loop
-    }
+	GPL game(800,600,"Minha Janela",true,false);	// Inicializa a biblioteca
+	game.evolve(Game());
 }

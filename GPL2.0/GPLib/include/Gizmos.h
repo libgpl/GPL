@@ -1,11 +1,10 @@
 #pragma once
-#include "SFML/Graphics.hpp"
+#include "Base.h"
 
-class Gizmos
+class Gizmos : public Base
 {
-	sf::RenderWindow *window;
 public:
-	Gizmos(sf::RenderWindow *window);
+	Gizmos();
 	~Gizmos(void);
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Desenha um pixel. </summary>

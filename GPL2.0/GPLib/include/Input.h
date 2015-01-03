@@ -1,11 +1,7 @@
 #pragma once
 
-#include "SFML/Graphics.hpp"
-#include "SFML/Window/Keyboard.hpp"
 
-typedef sf::Keyboard::Key KEY;
-typedef sf::Mouse::Button MOUSE;
-typedef sf::Vector2f Vector2f;
+#include "Base.h"
 
 //
 //#include <iostream>
@@ -14,7 +10,7 @@ typedef sf::Vector2f Vector2f;
 //using namespace std;
 
 
-class Input
+class Input : public Base
 {
 public:
 	Input();

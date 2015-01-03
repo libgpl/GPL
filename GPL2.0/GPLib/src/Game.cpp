@@ -1,0 +1,18 @@
+#include "../include/Game.h"
+
+Game::Game(void):finish(false)
+{
+	//input.setwindow(window);
+	//panel.setwindow(window);
+	//gizmos.setwindow(window);
+}
+
+
+Game::~Game(void)
+{
+}
+
+bool Game::isFinish()
+{
+	return finish;
+}

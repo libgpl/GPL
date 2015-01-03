@@ -90,29 +90,39 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\Base.cpp" />
+    <ClCompile Include="..\..\src\Collision.cpp" />
+    <ClCompile Include="..\..\src\Game.cpp" />
+    <ClCompile Include="..\..\src\GPL.cpp" />
     <ClCompile Include="..\..\src\Gizmos.cpp" />
-    <ClCompile Include="..\..\src\gpl.cpp" />
+    <ClCompile Include="..\..\src\gpl2.cpp" />
     <ClCompile Include="..\..\src\gplObj.cpp" />
     <ClCompile Include="..\..\src\Input.cpp" />
     <ClCompile Include="..\..\src\music.cpp" />
+    <ClCompile Include="..\..\src\Panel.cpp" />
     <ClCompile Include="..\..\src\Scene.cpp" />
     <ClCompile Include="..\..\src\sound.cpp" />
-    <ClCompile Include="..\..\src\sprite.cpp" />
-    <ClCompile Include="..\..\src\text.cpp" />
+    <ClCompile Include="..\..\src\Sprite.cpp" />
+    <ClCompile Include="..\..\src\Text.cpp" />
     <ClCompile Include="TESTE.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\include\Base.h" />
+    <ClInclude Include="..\..\include\Collision.h" />
+    <ClInclude Include="..\..\include\Game.h" />
+    <ClInclude Include="..\..\include\GPL.h" />
     <ClInclude Include="..\..\include\Gizmos.h" />
-    <ClInclude Include="..\..\include\gpl.h" />
+    <ClInclude Include="..\..\include\gpl2.h" />
     <ClInclude Include="..\..\include\gplObj.h" />
     <ClInclude Include="..\..\include\gpl_include.h" />
     <ClInclude Include="..\..\include\Input.h" />
     <ClInclude Include="..\..\include\music.h" />
+    <ClInclude Include="..\..\include\Panel.h" />
     <ClInclude Include="..\..\include\Scene.h" />
     <ClInclude Include="..\..\include\sound.h" />
-    <ClInclude Include="..\..\include\sprite.h" />
+    <ClInclude Include="..\..\include\Sprite.h" />
     <ClInclude Include="..\..\include\teste.h" />
-    <ClInclude Include="..\..\include\text.h" />
+    <ClInclude Include="..\..\include\Text.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,9 +1,8 @@
 #include "../include/Gizmos.h"
 
 
-Gizmos::Gizmos(sf::RenderWindow *window)
+Gizmos::Gizmos()
 {
-	this->window = window;
 }
 
 Gizmos::~Gizmos(void)
