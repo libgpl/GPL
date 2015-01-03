@@ -1,3 +1,5 @@
+![image](https://raw.githubusercontent.com/libgpl/GPL/master/GPL2.0/GPLib/resources/logoGPL2.png)
+
 # Game Programming Library (GPL 2.0)
 
 A **GPL**, é uma biblioteca didática gratuíta para desenvolvimento de jogos 2D. O projeto preza pela facilidade de aprendizado e a simplicidade de desenvolvimento, tendo como missão ampliar a participação de mais pessoas na área de Jogos e Entretenimento Digital Interativo. Nossa visão é que todos devem ter a oportunidade de aprender a programar, de uma forma fácil e lúdica. Assim como o [code.org](http://code.org/), acreditamos que a ciência da computação e a programação de computadores deve ser parte do currículo educacional, ao lado de disciplinas como ciências, tecnologia, engenharia e matemática (STEM).
