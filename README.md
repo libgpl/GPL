@@ -1,4 +1,4 @@
-![image](https://raw.githubusercontent.com/libgpl/GPL/master/GPL2.0/GPLib/resources/logoGPL2.png)
+![image](https://raw.githubusercontent.com/libgpl/GPL/master/GPL2.0/GPLib/resources/logo/LogoGPL2a.png)
 
 # Game Programming Library (GPL 2.0)
 
