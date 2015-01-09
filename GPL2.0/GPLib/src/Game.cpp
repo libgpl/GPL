@@ -2,6 +2,7 @@
 
 Game::Game(void):finish(false)
 {
+	panel = new Panel();
 	//input.setwindow(window);
 	//panel.setwindow(window);
 	//gizmos.setwindow(window);

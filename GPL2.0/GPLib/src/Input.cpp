@@ -2,6 +2,8 @@
 
 Input::Input(void)
 {
+	base = new Base();
+
 	for(int i = 0; i < KEY::KeyCount; i++){
 		onPressed[i] = false;
 		onDownPressed[i] = false;

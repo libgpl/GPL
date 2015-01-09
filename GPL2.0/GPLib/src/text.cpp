@@ -3,6 +3,7 @@
 
 Text::Text(void):x(0),y(0),size(1),R(255),G(255),B(255),bold(false),italic(false),underline(false)
 {
+	base = new Base();
 }
 
 Text::~Text(void)
@@ -99,5 +100,5 @@ void Text::draw(string text, int x, int y, unsigned int size, unsigned int R, un
 		}
 
 	}
-	window->draw(this->text);
+	base->getWindow()->draw(this->text);
 }

@@ -2,12 +2,14 @@
 
 #include "../include/Sprite.h"
 #include "../include/Collision.h"
-#include "../include/Panel.h"
+//#include "../include/Panel.h"
 
 using namespace Collision;
 
 Sprite::Sprite(void):x(0),y(0),currentFrame(0),animationTime(30),alpha(255),mirror(false)
 {
+	base = new Base();
+	panel = new Panel();
 }
 
 Sprite::~Sprite(void)
@@ -21,12 +23,8 @@ void Sprite::load(string filename)
 	string file = "./assets/sprites/" + filename;
 	if(!(*frames.back()).loadFromFile(file))
 	{
-		// TODO arrumar esse problema do panel
-		//Panel panel;
-		//panel.setWindow(window);
-		//panel.Debug("ERRO","Arquivo do sprite '"+filename+"' não encontrado");
-	}	
-	
+		panel->Debug("ERRO","Arquivo do sprite '"+filename+"' não encontrado");
+	}		
 }
 
 void Sprite::load(string filename, unsigned int x, unsigned int y, unsigned int width, unsigned int height)
@@ -36,10 +34,7 @@ void Sprite::load(string filename, unsigned int x, unsigned int y, unsigned int 
 	string file = "./assets/sprites/" + filename;
 	if(!(*frames.back()).loadFromFile(file, sf::IntRect(x, y, width, height)))
 	{
-		// TODO arrumar esse problema do panel
-		//Panel panel;
-		//panel.setWindow(window);
-		//panel.Debug("ERRO","Arquivo do sprite '"+filename+"' não encontrado");
+		panel->Debug("ERRO","Arquivo do sprite '"+filename+"' não encontrado");
 	}	
 }
 
@@ -125,10 +120,10 @@ void Sprite::draw(int x, int y, bool mirror, int alpha, unsigned int angle, bool
 		retangulo.setOutlineColor(sf::Color(255, 0, 0));
 		retangulo.setPosition(_sprite.getPosition().x,_sprite.getPosition().y);
 		retangulo.setRotation(_sprite.getRotation());
-		window->draw(retangulo);
+		base->getWindow()->draw(retangulo);
 	}
 
-	window->draw(_sprite);
+	base->getWindow()->draw(_sprite);
 }
 
 bool Sprite::collides(Sprite _sprite)

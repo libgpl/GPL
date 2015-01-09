@@ -10,6 +10,51 @@
 // desabilita o linker incremental
 //#pragma comment(linker, "/incremental /incremental:no")
 
+#include <string>
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+void meuContador()
+{
+	string hora,dia,mes,ano; 
+	fstream file;
+	file.open("log.txt",ios::in | ios::out);
+	file >> hora >> mes >> dia >> ano; 
+	file.close();
+	
+	
+	string data = mes + "  " + dia + " " + ano;
+	string hora2 = __TIME__;
+	string data2 = __DATE__;
+	cout << hora << endl;
+	cout << hora2 << endl;
+	cout << data << endl;
+	cout << data2 << endl;
+	
+	if(data != data2 || hora != hora2)	
+	{		
+	int major, minor, release;	
+	fstream file1;
+	char temp;
+	file1.open("log.txt",ios::in | ios::out);
+	file1 >> hora >> mes >> dia >> ano >> major >> temp >> minor >> temp >> release; 
+	release++;			
+	file1.close();
+	
+	fstream file2;
+	file2.open("log.txt",ios::in | ios::out);
+	file2 << __TIME__ << "	" << __DATE__ << "	" << major << "." << minor << "." <<  release << "		" << endl;
+	file2.close();	
+	
+	fstream file3;
+	file3.open("log.txt",ios::in | ios::app);
+	file3 << __TIME__ << "	" << __DATE__ << "	" << major << "." << minor << "." << release << "		" << endl;
+	file3.close();
+	}
+}
+
+
 // Inclusão da SFML 2.1
 #ifndef _DEBUG
 	#pragma message("RELEASE SFML 2.1 - added libs: sfml-graphics.lib sfml-window.lib sfml-system.lib sfml-audio.lib (VS2010+)")
@@ -35,7 +80,7 @@
 //	Gizmos			OK
 //	Text
 //	Panel			Colocar como static/singleton
-//	Debug			
+//	Debug			   
 //	Inspector		mostra informações sobre um objeto
 //	Sound
 //	Music
@@ -50,6 +95,7 @@
 void main()
 {
 	// Seção de carregamento de assets
+	meuContador();
 
 	GPL game(800,600,"Minha Janela",true,false);	// Inicializa a biblioteca
 	game.evolve(Game());

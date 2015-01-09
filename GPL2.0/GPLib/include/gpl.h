@@ -8,7 +8,7 @@ using namespace std;
 #include "Game.h"
 
 
-class GPL : public Base
+class GPL
 {
 public:
 
@@ -76,6 +76,7 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void gplSleep(int milisec);
 private:
+	Base *base;
 	int splashTime;
 	sf::Clock relogio;
 	sf::Time tempo;

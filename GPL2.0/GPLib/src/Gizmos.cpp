@@ -3,6 +3,7 @@
 
 Gizmos::Gizmos()
 {
+	base = new Base();
 }
 
 Gizmos::~Gizmos(void)
@@ -16,7 +17,7 @@ void Gizmos::pixel(int x, int y, int R, int G, int B, int A)
 	retangulo.setFillColor(sf::Color(R,G,B,A));
 	retangulo.setOutlineColor(sf::Color(0,0,0,0));
 	retangulo.setPosition((float)x,(float)y);
-	window->draw(retangulo);
+	base->getWindow()->draw(retangulo);
 }
 
 void Gizmos::line(int x, int y, int lenght, int thickness, int R, int G, int B, int A, int angle)
@@ -27,7 +28,7 @@ void Gizmos::line(int x, int y, int lenght, int thickness, int R, int G, int B, 
 	retangulo.setOutlineColor(sf::Color(0,0,0,0));
 	retangulo.setPosition((float)x,(float)y);
 	retangulo.setRotation((float)angle);
-	window->draw(retangulo);
+	base->getWindow()->draw(retangulo);
 }
 
 void Gizmos::rectangle(int x, int y, int widht, int height, int thickness, int R, int G, int B, int A, int angle)
@@ -38,7 +39,7 @@ void Gizmos::rectangle(int x, int y, int widht, int height, int thickness, int R
 	retangulo.setOutlineColor(sf::Color(R, G, B, A));
 	retangulo.setPosition((float)x,(float)y);
 	retangulo.setRotation((float)angle);
-	window->draw(retangulo);
+	base->getWindow()->draw(retangulo);
 }
 
 void Gizmos::circle(int x, int y, int radius, int thickness, int R, int G, int B, int A)
@@ -48,5 +49,5 @@ void Gizmos::circle(int x, int y, int radius, int thickness, int R, int G, int B
 	shape.setOutlineThickness((float)thickness);
 	shape.setOutlineColor(sf::Color(R,G,B,A));
 	shape.setPosition((float)x,(float)y);
-	window->draw(shape);
+	base->getWindow()->draw(shape);
 }

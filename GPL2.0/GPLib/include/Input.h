@@ -3,6 +3,8 @@
 
 #include "Base.h"
 
+typedef sf::Keyboard::Key KEY;
+typedef sf::Mouse::Button MOUSE;
 //
 //#include <iostream>
 //#include <vector>
@@ -10,7 +12,7 @@
 //using namespace std;
 
 
-class Input : public Base
+class Input
 {
 public:
 	Input();
@@ -28,6 +30,7 @@ public:
 	bool isJoystickButtonUp(MOUSE _mouse);
 	bool isJoystickButtonDown(MOUSE _mouse);
 private:
+	Base *base;
 
 	bool onPressed[KEY::KeyCount];
 	bool onDownPressed[KEY::KeyCount];

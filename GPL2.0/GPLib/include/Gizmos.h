@@ -1,8 +1,10 @@
 #pragma once
 #include "Base.h"
 
-class Gizmos : public Base
+class Gizmos
 {
+private:
+	Base *base;
 public:
 	Gizmos();
 	~Gizmos(void);

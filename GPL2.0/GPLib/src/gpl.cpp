@@ -6,18 +6,18 @@ GPL::GPL(unsigned int width, unsigned int height, string windowTitle, bool showM
 	{
 		tempo = relogio.getElapsedTime();
 	}
-
+	base = new Base();
 	// TODO: fechamento da janela do splash screen
-	//if(window != NULL) window->close();
+//	if(base->getWindow() != NULL) base->getWindow()->close();
 
 	// create the window
-	if(!fullscreen)	window = new sf::RenderWindow(sf::VideoMode(width, height, 32), windowTitle, sf::Style::Close);
-	else			window = new sf::RenderWindow(sf::VideoMode(width, height, 32), windowTitle, sf::Style::Fullscreen);
+	if(!fullscreen)	base->setWindow(new sf::RenderWindow(sf::VideoMode(width, height, 32), windowTitle, sf::Style::Close));
+	else			base->setWindow(new sf::RenderWindow(sf::VideoMode(width, height, 32), windowTitle, sf::Style::Fullscreen));
 
-	window->setActive();
+	base->getWindow()->setActive();
 	tempo.Zero;
 
-	if(!showMouse) window->setMouseCursorVisible(false);
+	if(!showMouse) base->getWindow()->setMouseCursorVisible(false);
 	// TODO: descomentar isso
 	// Carrega a fonte padrão do sistema (Segoe UI)
 	//defaultText.load("calibri.ttf");
@@ -33,16 +33,17 @@ GPL::~GPL(void)
 
 string GPL::gplVersion()
 {
-	return version;
+	return base->getVersion();
 }
 
 void GPL::evolve(Game game)
 {
 	// Definição da janela de desenho
-	game.gizmos.setWindow(window);
-	game.input.setWindow(window);
-	game.panel.setWindow(window);
-	game.text.setWindow(window);
+	// TODO comentei este trecho CUIDADO
+	//game.gizmos.setWindow(window);
+	//game.input.setWindow(window);
+	//game.panel.setWindow(window);
+	//game.text.setWindow(window);
 
 	// Funcionamento do jogo
 	game.load();
@@ -50,10 +51,10 @@ void GPL::evolve(Game game)
 	{
 		game.run();
 
-		// Exibindo o terminal somente em modo DEBUG
-#ifdef _DEBUG
-		if(	game.panel.getMessagePollSize() > 0) game.panel.Draw();
-#endif
+				// Exibindo o terminal somente em modo DEBUG
+		#ifdef _DEBUG
+				if(	game.panel->getMessagePollSize() > 0) game.panel->Draw();
+		#endif
 
 
 		flush();
@@ -64,33 +65,33 @@ void GPL::evolve(Game game)
 void GPL::flush()
 {
 	// check all the window's events that were triggered since the last iteration of the loop
-	while(window->pollEvent(event))
+	while(base->getWindow()->pollEvent(event))
 	{
 		// "close requested" event: we close the window
 		if (event.type == sf::Event::Closed)
 		{
-			window->close();
+			base->getWindow()->close();
 			exit(0);
 		}
 	}
 
-	if(!window->isOpen())
+	if(!base->getWindow()->isOpen())
 	{
 		exit(0);
 	}
 
-	window->display();
-	window->clear(sf::Color::Black);
+	base->getWindow()->display();
+	base->getWindow()->clear(sf::Color::Black);
 }
 
 int GPL::getScreenWidth()
 {
-	return window->getSize().x;
+	return base->getWindow()->getSize().x;
 }
 
 int GPL::getScreenHeight()
 {
-	return window->getSize().y;
+	return base->getWindow()->getSize().y;
 }
 
 void GPL::gplSetIcon(string iconFile)
@@ -102,12 +103,12 @@ void GPL::gplSetIcon(string iconFile)
 
 	if(!icon.loadFromFile(file))
 	{
-		// TODO: descomentar isso
-		//debug("ERRO", "Arquivo de icone '"+iconFile+"' não encontrado");
+		Panel *panel = new Panel();
+		panel->Debug("ERRO", "Arquivo de icone '"+iconFile+"' não encontrado");
 	}	
 	else
 	{
-		window->setIcon(icon.getSize().x,icon.getSize().y,icon.getPixelsPtr());
+		base->getWindow()->setIcon(icon.getSize().x,icon.getSize().y,icon.getPixelsPtr());
 	}	
 
 }
@@ -156,8 +157,8 @@ int GPL::gplGetFPS()
 
 void GPL::gplSetFPS(unsigned int fps)
 {
-	window->setVerticalSyncEnabled(true); 
-	window->setFramerateLimit(fps); // Setting max framerate to 60 (Facultative)}
+	base->getWindow()->setVerticalSyncEnabled(true); 
+	base->getWindow()->setFramerateLimit(fps); // Setting max framerate to 60 (Facultative)}
 }
 
 

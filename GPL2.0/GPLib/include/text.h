@@ -7,9 +7,10 @@
 
 using namespace std;
 
-class Text : public Base
+class Text
 {
-private: 
+private:
+	Base *base;
 	sf::Font *font;
 	int x;
 	int y;

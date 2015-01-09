@@ -6,13 +6,15 @@
 #include <vector>
 #include <iostream>
 #include "Base.h"
+#include "Panel.h"
 //#include "../include/gpl.h"
 
 using namespace std;
 
-class Sprite : Base
+class Sprite
 {
 private:
+	Panel *panel;
 	int x;
 	int y;
 	int alpha;
@@ -25,6 +27,7 @@ private:
 
 	vector<sf::Texture*> frames;
 	sf::Sprite _sprite;
+	Base *base;
 public:
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////

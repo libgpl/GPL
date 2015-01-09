@@ -5,9 +5,9 @@
 //
 //#include <SFML/Audio/Sound.hpp>
 //#include <SFML/Audio/SoundBuffer.hpp>
-//#include "gplObj.h"
+//#include "Object.h"
 //
-//class sound : gplObj
+//class sound : Object
 //{
 //private:
 //	sf::SoundBuffer buffer;
