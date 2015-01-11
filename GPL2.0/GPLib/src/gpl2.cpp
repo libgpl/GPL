@@ -1,4 +1,4 @@
-#include "../include/gpl.h"
+#include "../include/Window.hpp"
 
 #include <sstream>
 
@@ -10,7 +10,7 @@
 
 
 
-//void draw(sf::Sprite *t, bool borda)
+//void draw(sf::Sprite* t, bool borda)
 //{
 //	if(borda)
 //	{
@@ -26,7 +26,7 @@
 //	window->draw(*t);
 //}
 //
-//void write(sf::Text *Text)
+//void write(sf::Text* Text)
 //{
 //	window->draw(*Text);
 //}

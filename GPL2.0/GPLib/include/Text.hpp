@@ -3,15 +3,16 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <iostream>
-#include "Base.h"
+//#include "ObjectGPL.hpp"
+#include "Base.hpp"
 
-using namespace std;
 
-class Text
+
+class Text/* : public ObjectGPL*/
 {
 private:
-	Base *base;
-	sf::Font *font;
+	Base* base;
+	sf::Font* font;
 	int x;
 	int y;
 	unsigned int size;
@@ -23,7 +24,7 @@ private:
 	bool italic;
 	bool underline;
 	sf::Text text;
-	string _text;
+	std::string _text;
 public:
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,7 +41,7 @@ public:
 	/// <summary>	Carrega um arquivo de fonte para o texto </summary>
 	/// <param name="filename">Caminho do arquivo de fonte a ser carregado (TrueType, Type 1, CFF, OpenType, SFNT, X11 PCF, Windows FNT, BDF, PFR, Type 42)</param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	void load(string filename);
+	void load(std::string filename);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Desenha o texto </summary>
@@ -57,6 +58,5 @@ public:
 	/// <param name="italic">   	(Opcional) Italico</param>
 	/// <param name="underline">	(Opcional) Sublinhado</param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	void draw(string text, int x, int y, unsigned int size = 10, unsigned int R = 255, unsigned int G = 255, unsigned int B = 255, unsigned int A = 255, bool bold = false, bool italic = false, bool underline = false);
+	void draw(std::string text, int x, int y, unsigned int size = 10, unsigned int R = 255, unsigned int G = 255, unsigned int B = 255, unsigned int A = 255, bool bold = false, bool italic = false, bool underline = false);
 };
-

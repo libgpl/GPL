@@ -1,6 +1,6 @@
-#include "../include/Scene.h"
+#include "../include/Scene.hpp"
 
-Scene::Scene(string sceneName)
+Scene::Scene(std::string sceneName)
 {
 	//for(int i = 0; i < scenesNames.size(); i++)
 	//{
@@ -16,7 +16,7 @@ Scene::Scene(string sceneName)
 	//auto search = scenesNames.find(sceneName);
 	//bool temp = true;
 	//if(search != scenesNames.end())
-	//{	scenesNames.insert(std::pair<string,Scene*>(sceneName,this));
+	//{	scenesNames.insert(std::pair<std::string,Scene*>(sceneName,this));
 	//	folderName = sceneName;
 	//}
 	//else
@@ -24,7 +24,7 @@ Scene::Scene(string sceneName)
 	//	MESSAGE(Nome de cena já usado);
 	//}
 
-	cout << folderName << endl;
+	std::cout << folderName << std::endl;
 }
 
 

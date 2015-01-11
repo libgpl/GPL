@@ -1,5 +1,5 @@
-#include "../include/Panel.h"
-#include "../include/Gizmos.h"
+#include "../include/Panel.hpp"
+#include "../include/Gizmos.hpp"
 
 #include "SFML/Graphics.hpp"
 
@@ -40,7 +40,7 @@ void Panel::Draw()
 	gizmos.line((base->getWindow()->getSize().x / 3)*2,23,50,2,84,130,52,102,90);
 
 	// TODO: resolver o problema do GPL version
-	string title = "GPL "+base->getVersion()+" DEBUG PANEL";
+	std::string title = "GPL "+base->getVersion()+" DEBUG PANEL";
 
 	// TODO: resolver o problema do defaultText em todo o código
 
@@ -78,17 +78,17 @@ void Panel::Draw()
 	}
 }
 
-int Panel::getMessagePollSize()
+int Panel::getMessagePollSize() const
 {
 	return messagePoll.size();
 }
 
 
-//void debug(string key, bool value)
+//void debug(std::string key, bool value)
 //{
-//	string temp;
-//	stringstream conv;
-//	string booleano;
+//	std::string temp;
+//	std::stringstream conv;
+//	std::string booleano;
 //	if(value) booleano = "TRUE";
 //	else booleano = "FALSE";
 //
@@ -98,41 +98,41 @@ int Panel::getMessagePollSize()
 //
 //}
 
-//void debug(string key, int value)
+//void debug(std::string key, int value)
 //{
-//	string temp;
-//	stringstream conv;
+//	std::string temp;
+//	std::stringstream conv;
 //	conv << value;
 //	conv >> temp;
 //	debug(key,temp);
 //}
 
 
-//void debug(string key, double value)
+//void debug(std::string key, double value)
 //{
-//	string temp;
-//	stringstream conv;
+//	std::string temp;
+//	std::stringstream conv;
 //	conv << value;
 //	conv >> temp;
 //	debug(key,temp);
 //}
 //
-//void debug(string key, float value)
+//void debug(std::string key, float value)
 //{
-//	string temp;
-//	stringstream conv;
+//	std::string temp;
+//	std::stringstream conv;
 //	conv << value;
 //	conv >> temp;
 //	debug(key,temp);
 //}
 //
-//void debug(string key, char value)
+//void debug(std::string key, char value)
 //{
-//	string temp;
-//	stringstream conv;
+//	std::string temp;
+//	std::stringstream conv;
 //	conv << value;
 //	conv >> temp;
 //	debug(key,temp);
 //}
 
-Panel *Panel::single = 0;
+Panel* Panel::single = 0;

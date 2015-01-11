@@ -1,4 +1,4 @@
-//#include "../../include/gpl_include.h"
+//#include "../../include/gpl_include.hpp"
 #pragma once
 ////////////////////////////////////////////////////////////////////////////////////////////
 // GPL2: Cabeçalho de configuração automática das bibliotecas para o Visual Studio
@@ -13,43 +13,43 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-using namespace std;
+
 
 void meuContador()
 {
-	string hora,dia,mes,ano; 
-	fstream file;
-	file.open("log.txt",ios::in | ios::out);
+	std::string hora,dia,mes,ano; 
+	std::fstream file;
+	file.open("log.txt",std::ios::in | std::ios::out);
 	file >> hora >> mes >> dia >> ano; 
 	file.close();
 	
 	
-	string data = mes + "  " + dia + " " + ano;
-	string hora2 = __TIME__;
-	string data2 = __DATE__;
-	cout << hora << endl;
-	cout << hora2 << endl;
-	cout << data << endl;
-	cout << data2 << endl;
+	std::string data = mes + "  " + dia + " " + ano;
+	std::string hora2 = __TIME__;
+	std::string data2 = __DATE__;
+	std::cout << hora << std::endl;
+	std::cout << hora2 << std::endl;
+	std::cout << data << std::endl;
+	std::cout << data2 << std::endl;
 	
 	if(data != data2 || hora != hora2)	
 	{		
 	int major, minor, release;	
-	fstream file1;
+	std::fstream file1;
 	char temp;
-	file1.open("log.txt",ios::in | ios::out);
+	file1.open("log.txt",std::ios::in | std::ios::out);
 	file1 >> hora >> mes >> dia >> ano >> major >> temp >> minor >> temp >> release; 
 	release++;			
 	file1.close();
 	
-	fstream file2;
-	file2.open("log.txt",ios::in | ios::out);
-	file2 << __TIME__ << "	" << __DATE__ << "	" << major << "." << minor << "." <<  release << "		" << endl;
+	std::fstream file2;
+	file2.open("log.txt", std::ios::in | std::ios::out);
+	file2 << __TIME__ << "	" << __DATE__ << "	" << major << "." << minor << "." <<  release << "		" << std::endl;
 	file2.close();	
 	
-	fstream file3;
-	file3.open("log.txt",ios::in | ios::app);
-	file3 << __TIME__ << "	" << __DATE__ << "	" << major << "." << minor << "." << release << "		" << endl;
+	std::fstream file3;
+	file3.open("log.txt", std::ios::in | std::ios::app);
+	file3 << __TIME__ << "	" << __DATE__ << "	" << major << "." << minor << "." << release << "		" << std::endl;
 	file3.close();
 	}
 }
@@ -70,26 +70,28 @@ void meuContador()
 	#pragma comment(lib, "..//..//SFML//lib//sfml-audio-d.lib")
 #endif	
 
-#include "../../include/gpl.h"
-#include "../../include/Game.h"
-#include "../../include/GPL.h"
+#include "../../include/Window.hpp"
+#include "../../include/Game.hpp"
+#include "../../include/Text.hpp"
+#include "../../include/Input.hpp"
+
 /*
 //////////////////////////////////////////////////////////////
 //							STATUS							//
 //	Input			Falta Joystick
 //	Gizmos			OK
-//	Text
-//	Panel			Colocar como static/singleton
-//	Debug			   
-//	Inspector		mostra informações sobre um objeto
-//	Sound
-//	Music
-//	Scene
-//	GPL
-//	Métodos de retorno como const, para nao serem mudaddos.
-//////////////////////////////////////////////////////////////
-// Obs.: Passar por ponteiro a sf::RenderWindow *window para
-//		 as classes que necessitam
+//	Text			Ok
+//	Panel			Aparentemente Ok, falta testar
+//		Debug		Função pertencente ao panel - falta resolver problema com o textDefault
+//		Inspector	Mostra informações sobre um objeto - não implementado
+//	Audio			Interface criada
+//	Sound			Aparentemente Ok, falta testar
+//	Music			Aparentemente Ok, falta testar
+//	Window			Falta o splash screen			
+//	Scene			Ver necessidade de implementação =D
+//	Métodos de retorno como const, para nao serem mudados.
+Sobrecarregar o operador << para escrita
+usar funções friends no lugar de static nos cpp's
 //////////////////////////////////////////////////////////////
 */
 void main()
@@ -97,6 +99,12 @@ void main()
 	// Seção de carregamento de assets
 	meuContador();
 
-	GPL game(800,600,"Minha Janela",true,false);	// Inicializa a biblioteca
-	game.evolve(Game());
+	Window game(800,600,"Minha Janela",true,false);	// Inicializa a biblioteca
+	Text text;
+	text.load("calibri.ttf");
+	while(true)
+	{
+		text.draw("alouussss",100,100,50);
+		game.flush();
+	}
 }

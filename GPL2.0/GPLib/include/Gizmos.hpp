@@ -1,10 +1,11 @@
 #pragma once
-#include "Base.h"
+#include "ObjectGPL.hpp"
+#include "Base.hpp"
 
-class Gizmos
+class Gizmos : public ObjectGPL
 {
 private:
-	Base *base;
+	Base* base;
 public:
 	Gizmos();
 	~Gizmos(void);

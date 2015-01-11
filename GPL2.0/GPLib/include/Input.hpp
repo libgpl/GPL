@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "Base.h"
+#include "ObjectGPL.hpp"
 
 typedef sf::Keyboard::Key KEY;
 typedef sf::Mouse::Button MOUSE;
@@ -9,10 +9,10 @@ typedef sf::Mouse::Button MOUSE;
 //#include <iostream>
 //#include <vector>
 //
-//using namespace std;
+//
 
 
-class Input
+class Input : public ObjectGPL
 {
 public:
 	Input();
@@ -30,7 +30,6 @@ public:
 	bool isJoystickButtonUp(MOUSE _mouse);
 	bool isJoystickButtonDown(MOUSE _mouse);
 private:
-	Base *base;
 
 	bool onPressed[KEY::KeyCount];
 	bool onDownPressed[KEY::KeyCount];

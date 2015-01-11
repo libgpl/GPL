@@ -1,5 +1,5 @@
-#include "../include/Music.h"
-#include "../include/gpl.h"
+#include "../include/Music.hpp"
+#include "../include/Window.hpp"
 
 
 Music::Music(void)
@@ -10,9 +10,9 @@ Music::~Music(void)
 {
 }
 
-void Music::load(string filename)
+void Music::load(std::string filename)
 {
-	string file = "./assets/musics/" + filename;
+	std::string file = "./assets/musics/" + filename;
 	if(!_music.openFromFile(file))
 	{
 		// TODO: arrumar isso

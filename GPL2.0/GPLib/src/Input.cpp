@@ -1,8 +1,8 @@
-#include "../include/Input.h"
+#include "../include/Input.hpp"
 
 Input::Input(void)
 {
-	base = new Base();
+	//base = new Base();
 
 	for(int i = 0; i < KEY::KeyCount; i++){
 		onPressed[i] = false;

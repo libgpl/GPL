@@ -1,4 +1,4 @@
-#include "../include/Base.h"
+#include "../include/Base.hpp"
 
 Base::Base(void)
 {
@@ -14,7 +14,7 @@ Base::~Base(void)
 		delete single;
 	}
 }
-void Base::setWindow(Window *window)
+void Base::setWindow(_Window* window)
 {
 	if(!single)
 	{
@@ -23,20 +23,20 @@ void Base::setWindow(Window *window)
 	single->window = window;
 }
 
-Window* Base::getWindow()
+_Window* Base::getWindow() const
 {
-	if(!single)
+	if(&single->window == NULL)
 	{
-		single = new Base(true);
+		return NULL;
 	}
 	return single->window;
 }
 
-string Base::getVersion()
+std::string Base::getVersion() const
 {
 	return version;
 }
 
 
-Base *Base::single = 0;
+Base* Base::single = 0;
 

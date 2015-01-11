@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../include/Sprite.h"
-#include "../include/Collision.h"
-//#include "../include/Panel.h"
+#include "../include/Sprite.hpp"
+#include "../include/Collision.hpp"
+//#include "../include/Panel.hpp"
 
 using namespace Collision;
 
@@ -16,34 +16,34 @@ Sprite::~Sprite(void)
 {
 }
 
-void Sprite::load(string filename)
+void Sprite::load(std::string filename)
 {
 	frames.push_back(new sf::Texture());
 
-	string file = "./assets/sprites/" + filename;
+	std::string file = "./assets/sprites/" + filename;
 	if(!(*frames.back()).loadFromFile(file))
 	{
 		panel->Debug("ERRO","Arquivo do sprite '"+filename+"' não encontrado");
 	}		
 }
 
-void Sprite::load(string filename, unsigned int x, unsigned int y, unsigned int width, unsigned int height)
+void Sprite::load(std::string filename, unsigned int x, unsigned int y, unsigned int width, unsigned int height)
 {
 	frames.push_back(new sf::Texture());
 
-	string file = "./assets/sprites/" + filename;
+	std::string file = "./assets/sprites/" + filename;
 	if(!(*frames.back()).loadFromFile(file, sf::IntRect(x, y, width, height)))
 	{
 		panel->Debug("ERRO","Arquivo do sprite '"+filename+"' não encontrado");
 	}	
 }
 
-int Sprite::getResX()
+int Sprite::getResX() const
 {
 	return (*frames.back()).getSize().x;
 }
 
-int Sprite::getResY()
+int Sprite::getResY() const
 {
 	return (*frames.back()).getSize().y;
 }
@@ -53,7 +53,7 @@ void Sprite::setSpeed(unsigned int speed)
 	animationTime = speed;
 }
 
-int Sprite::getSpeed()
+int Sprite::getSpeed() const
 {
 	return animationTime;
 }
@@ -149,12 +149,12 @@ bool Sprite::collides(Sprite _sprite)
 	}
 }
 
-int Sprite::getPosX()
+int Sprite::getPosX() const
 {
 	return x;
 }
 
-int Sprite::getPosY()
+int Sprite::getPosY() const
 {
 	return y;
 }

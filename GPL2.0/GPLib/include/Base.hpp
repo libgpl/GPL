@@ -4,10 +4,10 @@
 #include "SFML/Window/Keyboard.hpp"
 #include <vector>
 #include <string>
-using namespace std;
+
 
 typedef sf::Vector2f Vector2f;
-typedef sf::RenderWindow Window;
+typedef sf::RenderWindow _Window;
 
 class Base
 {
@@ -15,13 +15,13 @@ private:
 	Base(bool placebo){}
 public:
 	Base(void);
-	~Base(void);
-	void setWindow(Window *window);
-	Window* getWindow();
-	string getVersion();
+	virtual ~Base(void);
+	void setWindow(_Window* window);
+	_Window* getWindow() const;
+	std::string getVersion() const;
 protected:
-	Window *window;
-	string version;
-	static Base *single;
+	_Window* window;
+	std::string version;
+	static Base* single;
 };
 

@@ -1,5 +1,5 @@
-#include "../include/Text.h"
-#include "../include/gpl.h"
+#include "../include/Text.hpp"
+#include "../include/Window.hpp"
 
 Text::Text(void):x(0),y(0),size(1),R(255),G(255),B(255),bold(false),italic(false),underline(false)
 {
@@ -10,11 +10,12 @@ Text::~Text(void)
 {
 }
 
-void Text::load(string filename)
+void Text::load(std::string filename)
 {
 	font = new sf::Font();
-	
-	string file = "./assets/fonts/" + filename;
+	std::string file;
+	file = "./assets/fonts/" + filename;
+
 	if(!font->loadFromFile(file))
 	{
 		// TODO descomentar isso
@@ -24,12 +25,12 @@ void Text::load(string filename)
 	this->text.setFont(*font);
 }
 
-void Text::draw(string text, int x, int y, unsigned int size, unsigned int R, unsigned int G, unsigned int B, unsigned int A, bool bold, bool italic, bool underline)
+void Text::draw(std::string text, int x, int y, unsigned int size, unsigned int R, unsigned int G, unsigned int B, unsigned int A, bool bold, bool italic, bool underline)
 {
 	if(this->_text != text)
 	{
 		this->_text = text;
-		// set the string to distocar
+		// set the std::string to distocar
 		this->text.setString(text);
 	}
 

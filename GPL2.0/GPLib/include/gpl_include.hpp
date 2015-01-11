@@ -1,6 +1,6 @@
-//#include "Input.h"
-//#include "Panel.h"
-//#include "Gizmos.h"
+//#include "Input.hpp"
+//#include "Panel.hpp"
+//#include "Gizmos.hpp"
 //
 //
 //Input input;
@@ -8,7 +8,7 @@
 //Gizmos gizmos;
 //
 
-//#include "gpl.h"
+//#include "gpl.hpp"
 
 
 
@@ -52,13 +52,13 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 //// Todos os includes da GPL
-//#include "config.h"
+//#include "config.hpp"
 //
 //#include <GerenciadorEntrada.h>
 //
 //////////////////////////////////////////////////////////////////////////////////////////////
 //
-//#include "Input.h"
+//#include "Input.hpp"
 //
 //namespace gpl{
 //
@@ -75,7 +75,7 @@
 //	{
 //		namespace music{ }
 //
-//		namespace sound{ }
+//		namespace Sound{ }
 //	}
 //
 //	namespace graphics
@@ -106,7 +106,7 @@
 //		using namespace gpl::input::joystick;
 //	using namespace gpl::audio;
 //		using namespace gpl::audio::music;
-//		using namespace gpl::audio::sound;
+//		using namespace gpl::audio::Sound;
 //	using namespace gpl::graphics;
 //		using namespace gpl::graphics::sprite;
 //		using namespace gpl::graphics::text;

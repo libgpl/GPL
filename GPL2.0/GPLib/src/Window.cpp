@@ -1,6 +1,7 @@
-#include "../include/GPL.h"
+#include "../include/Window.hpp"
+#include "../include/Panel.hpp"
 
-GPL::GPL(unsigned int width, unsigned int height, string windowTitle, bool showMouse, bool fullscreen)
+Window::Window(unsigned int width, unsigned int height, std::string windowTitle, bool showMouse, bool fullscreen)
 {
 	while((splashTime - tempo.asSeconds()) > 0)
 	{
@@ -26,44 +27,38 @@ GPL::GPL(unsigned int width, unsigned int height, string windowTitle, bool showM
 }
 
 
-GPL::~GPL(void)
+Window::~Window(void)
 {
 }
 
+//void Window::evolve(Game game)
+//{
+//	// Definição da janela de desenho
+//	// TODO comentei este trecho CUIDADO
+//	//game.gizmos.setWindow(window);
+//	//game.input.setWindow(window);
+//	//game.panel.setWindow(window);
+//	//game.text.setWindow(window);
+//
+//	// Funcionamento do jogo
+//	game.load();
+//	while(!game.isFinish())
+//	{
+//		game.run();
+//
+//
+//		flush();
+//	}
+//	game.unload();
+//}
 
-string GPL::gplVersion()
+void Window::flush()
 {
-	return base->getVersion();
-}
+	// Exibindo o terminal somente em modo DEBUG
+	//#ifdef _DEBUG
+	//		if(	game.panel->getMessagePollSize() > 0) game.panel->Draw();
+	//#endif
 
-void GPL::evolve(Game game)
-{
-	// Definição da janela de desenho
-	// TODO comentei este trecho CUIDADO
-	//game.gizmos.setWindow(window);
-	//game.input.setWindow(window);
-	//game.panel.setWindow(window);
-	//game.text.setWindow(window);
-
-	// Funcionamento do jogo
-	game.load();
-	while(!game.isFinish())
-	{
-		game.run();
-
-				// Exibindo o terminal somente em modo DEBUG
-		#ifdef _DEBUG
-				if(	game.panel->getMessagePollSize() > 0) game.panel->Draw();
-		#endif
-
-
-		flush();
-	}
-	game.unload();
-}
-
-void GPL::flush()
-{
 	// check all the window's events that were triggered since the last iteration of the loop
 	while(base->getWindow()->pollEvent(event))
 	{
@@ -84,22 +79,22 @@ void GPL::flush()
 	base->getWindow()->clear(sf::Color::Black);
 }
 
-int GPL::getScreenWidth()
+int Window::getWindowWidth() const
 {
 	return base->getWindow()->getSize().x;
 }
 
-int GPL::getScreenHeight()
+int Window::getWindowHeight() const
 {
 	return base->getWindow()->getSize().y;
 }
 
-void GPL::gplSetIcon(string iconFile)
+void Window::setIcon(std::string iconFile)
 {
 	// Define o icone da aplicação
 	sf::Image icon;
 
-	string file = "./assets/sprites/" + iconFile;
+	std::string file = "./assets/sprites/" + iconFile;
 
 	if(!icon.loadFromFile(file))
 	{
@@ -112,34 +107,28 @@ void GPL::gplSetIcon(string iconFile)
 	}	
 
 }
-//
-//void GPL::gplSplashScreen(string filename, unsigned int showTime)
-//{
-//	// Cria uma sprite
-//	sprite splash;
-//
-//	// Carrega o sprite
-//	splash.load(filename);
-//
-//	splashTime = showTime;
-//
-//	// create the window
-//	window = new sf::RenderWindow(sf::VideoMode(splash.getResX(), splash.getResY(), 32), "", sf::Style::None);
-//
-//	window->setActive();
-//	tempo.Zero;
-//
-//	window->setVerticalSyncEnabled(true); 
-//	window->setFramerateLimit(60); // Setting max framerate to 60 (Facultative)}
-//
-//	window->setMouseCursorVisible(false);
-//
-//	splash.draw(0,0);
-//
-//	window->display();
-//}
 
-int GPL::gplGetFPS()
+void Window::splashScreen(Sprite splashSprite, unsigned int showTime)
+{
+	splashTime = showTime;
+
+	// create the window
+	base->setWindow(new sf::RenderWindow(sf::VideoMode(splashSprite.getResX(), splashSprite.getResY(), 32), "", sf::Style::None));
+
+	base->getWindow()->setActive();
+	tempo.Zero;
+
+	base->getWindow()->setVerticalSyncEnabled(true); 
+	base->getWindow()->setFramerateLimit(60); // Setting max framerate to 60 (Facultative)}
+
+	base->getWindow()->setMouseCursorVisible(false);
+
+	splashSprite.draw(0,0);
+
+	base->getWindow()->display();
+}
+
+int Window::getFPS()
 {    
 	static int frameCounter = 0;
 	static int fps = 0;
@@ -155,14 +144,19 @@ int GPL::gplGetFPS()
 	return fps;
 }
 
-void GPL::gplSetFPS(unsigned int fps)
+void Window::setFPS(unsigned int fps)
 {
 	base->getWindow()->setVerticalSyncEnabled(true); 
 	base->getWindow()->setFramerateLimit(fps); // Setting max framerate to 60 (Facultative)}
 }
 
-
-void GPL::gplSleep(int milisec)
+// TODO: tirar estes dois métodos daqui
+void Window::gplSleep(int milisec)
 {
 	sf::sleep(sf::milliseconds(milisec));
+}
+
+std::string Window::gplVersion()
+{
+	return base->getVersion();
 }

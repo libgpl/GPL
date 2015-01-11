@@ -2,28 +2,21 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include "Base.h"
-#include "Object.h"
-using namespace std;
-
-struct message
-{
-	string key;
-	string value;
-};
+#include "ObjectGPL.hpp"
+#include "Base.hpp"
 
 
-class Panel : public Object
+class Panel : public ObjectGPL
 {
 public:
 	Panel(void);
 	~Panel(void);
 
 	template <typename variable>
-	void Debug(string key, variable value)
+	void Debug(std::string key, variable value)
 	{
-		string tempVar;
-		stringstream conv;
+		std::string tempVar;
+		std::stringstream conv;
 		conv << value;
 		conv >> tempVar;
 
@@ -47,14 +40,17 @@ public:
 		}
 	}
 
-
-
-
 	void Draw();
-	int getMessagePollSize();
+	int getMessagePollSize() const;
 private:
+	struct message
+	{
+		std::string key;
+		std::string value;
+	};
+
+	Base* base;
 	Panel(bool placebo){}
-	Base *base;
-	vector<message*> messagePoll;
-	static Panel *single;
+	std::vector<message*> messagePoll;
+	static Panel* single;
 };
