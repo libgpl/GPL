@@ -38,9 +38,14 @@ Mande um email para 'libgpl@gmail.com' contendo um vídeo ou um link com imagens
 
   - [Universidade do Vale do Rio dos Sinos](http://www.unisinos.br) (Unisinos), no Rio Grande do Sul, nos cursos superiores de Jogos Digitais. 
 -->
+##Tutoriais
+1. [Criando um projeto da GPL no Visual Studio](Tutorial 1.md)
+2. [Criando uma Janela](Tutorial 2.md)
+3. [Colocando uma imagem como background](Tutorial 3.md)
 
 ## Como começar
   - Utilize o projeto base_2010 que esta na pasta 'projects', este projeto vem configurado para compilar seus projetos utilizado a GPL no Visual Studio.
+
 <!--
 Ainda não existe um plugin ou script para a criação de novos projetos, você sempre deve utilizar o projeto base para iniciar.
 -->
