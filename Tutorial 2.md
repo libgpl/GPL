@@ -20,15 +20,6 @@ void main()
 {
     //To quit press Alt + F4 
     Window janela(1024, 768, "Meu Querido Jogo", true, false);
-
-    // Game Loop (Loop principal do jogo)
-    while(true)
-    {
-        // Lógica do Jogo
-    
-        // Atualiza o buffer de pintura (última coisa a ser chamada dentro do loop)
-        window.flush();
-    }
 }
 ```
 
@@ -39,14 +30,5 @@ void main()
 {
     //To quit press Alt + F4 
     Window janela();
-    
-    // Game Loop (Loop principal do jogo)
-    while(true)
-    {
-        // Lógica do Jogo
-
-        // Atualiza o buffer de pintura (última coisa a ser chamada dentro do loop)
-        window.flush();
-    }
 }
 ```
