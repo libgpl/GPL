@@ -9,8 +9,8 @@ Window(int width, int height, string windowTitle, bool showMouse, bool fullscree
 * *width* é a largura da janela em pixels (valor padrão 800 px); 
 * *height* é a altura da janela em pixels (valor padrão 600 px);
 * *windowTitle* é o nome da janela        (valor padrão 'GPL Game');
-* *showMouse* é um booleano que determina se o cursor do mouse será exibido (valor padrão TRUE);
-* *fullscreen* é um booleano que determina se o jogo será em tela cheia ou modo janela (valor padrão TRUE);
+* *showMouse* é um booleano que determina se o cursor do mouse será exibido (valor padrão true);
+* *fullscreen* é um booleano que determina se o jogo será em tela cheia ou modo janela (valor padrão true);
 
 Obs.: Para criar um jogo usando a GPL, deve-se, primeiramente, criar a janela e depois todos os demais componentes do jogo. Este procedimento é obrigatório, caso não seja feito ocorrerão erros de execução.
 
