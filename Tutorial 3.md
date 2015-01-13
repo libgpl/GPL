@@ -19,8 +19,8 @@ Exemplo - Criação de uma janela com os parâmetros padrões, 800 pixels de lar
 ```C++
 void main()
 {
-    Sprite imagem;
-    imagem.load("minhaQueridaImagem.png");
+    Sprite minhaImagem;
+    minhaImagem.load("minhaQueridaImagem.png");
 
     //To quit press Alt + F4 
     Window janela();
@@ -29,7 +29,7 @@ void main()
     while(true)
     {
         // Lógica do Jogo
-        minhaQueridaImagem.draw(100,200);
+        minhaImagem.draw(100,200);
 
         // Atualiza o buffer de pintura (última coisa a ser chamada dentro do loop)
         window.flush();
