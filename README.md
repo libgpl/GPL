@@ -46,16 +46,15 @@ Mande um email para 'libgpl@gmail.com' contendo um vídeo ou um link com imagens
 8. Colisões (Em breve)
 9. Audio (Em breve)
 10. Tempo (Em breve)
-
-11. Classe Window
-12. Classe GameObject
-13. Classe Physics
+11. Classe Window (Em breve)
+12. Classe GameObject (Em breve)
+13. Classe Physics (Em breve)
 
 ##Tutoriais Avançados
-1. Mapa com indexação sequêncial
-2. Movimentação de personagem em 8D
-3. Scroll de tela
-4. Lançamento de projétil
+1. Mapa com indexação sequêncial (Em breve)
+2. Movimentação de personagem em 8D (Em breve)
+3. Scroll de tela (Em breve)
+4. Lançamento de projétil (Em breve)
 
 ## Como começar
   - Utilize o projeto base_2010 que esta na pasta 'projects', este projeto vem configurado para compilar seus projetos utilizado a GPL no Visual Studio.
