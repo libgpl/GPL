@@ -8,23 +8,20 @@ A GPL foi criada pelo *Prof. MSc. Luan Carlos Nesi* e é mantida de forma colabo
 
 Escrita em C++, a GPL preza pela facilidade, provendo suporte à funcionalidades básicas de criação de jogos. Sua robustez advem de biblioteca [SFML](http://www.sfml-dev.org/), que sustenta sua base.
 
-<!--## Características
+## Características
 
   - Orientada a objetos
   - Nomenclatura padronizada (en)
 
 ## Funcionalidades
 
-  - Rendering de sprites (com sprite sheets)
+  - Rendering de sprites
   - Rendering de textos (com fontes .ttf)
   - Reprodução de áudio (.wav, .mp3, .ogg, outros)
-  - Gerenciamento de recursos
-  - Controle de tempo
-  - Captura de inputs (teclado, mouse, joystick e toque)
+  - Captura de inputs (teclado, mouse e joystick)
   - Funções para testes de colisão
-  - Tilemap com suporte a multiplas camadas e objetos
-  - Entre outras...
 
+<!--
 ## Jogos usando a Unicórnio
 
   - I hate Flappy Bird: [vídeo](http://www.youtube.com/watch?v=IgDd3IXTekg) 
@@ -42,18 +39,23 @@ Mande um email para 'libgpl@gmail.com' contendo um vídeo ou um link com imagens
 1. [Criando um projeto da GPL no Visual Studio](Tutorial 1.md)
 2. [Criando uma Janela](Tutorial 2.md)
 3. [Colocando uma imagem como background](Tutorial 3.md)
-4. [Teclado] (Em breve)
-5. [Mouse] (Em breve)
-6. [Joystick] (Em breve)
-7. [Sprites] (Em breve)
-8. [Colisões] (Em breve)
-9. [Audio] (Em breve)
-10. [Tempo] (Em breve)
+4. Teclado (Em breve)
+5. Mouse (Em breve)
+6. Joystick (Em breve)
+7. Sprites (Em breve)
+8. Colisões (Em breve)
+9. Audio (Em breve)
+10. Tempo (Em breve)
 
-A classe Window
-A classe GameObject
+11. Classe Window
+12. Classe GameObject
+13. Classe Physics
 
 ##Tutoriais Avançados
+1. Mapa com indexação sequêncial
+2. Movimentação de personagem em 8D
+3. Scroll de tela
+4. Lançamento de projétil
 
 ## Como começar
   - Utilize o projeto base_2010 que esta na pasta 'projects', este projeto vem configurado para compilar seus projetos utilizado a GPL no Visual Studio.
