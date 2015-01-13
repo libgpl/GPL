@@ -38,10 +38,22 @@ Mande um email para 'libgpl@gmail.com' contendo um vídeo ou um link com imagens
 
   - [Universidade do Vale do Rio dos Sinos](http://www.unisinos.br) (Unisinos), no Rio Grande do Sul, nos cursos superiores de Jogos Digitais. 
 -->
-##Tutoriais
+##Tutoriais Básicos
 1. [Criando um projeto da GPL no Visual Studio](Tutorial 1.md)
 2. [Criando uma Janela](Tutorial 2.md)
 3. [Colocando uma imagem como background](Tutorial 3.md)
+4. [Teclado] (Em breve)
+5. [Mouse] (Em breve)
+6. [Joystick] (Em breve)
+7. [Sprites] (Em breve)
+8. [Colisões] (Em breve)
+9. [Audio] (Em breve)
+10. [Tempo] (Em breve)
+
+A classe Window
+A classe GameObject
+
+##Tutoriais Avançados
 
 ## Como começar
   - Utilize o projeto base_2010 que esta na pasta 'projects', este projeto vem configurado para compilar seus projetos utilizado a GPL no Visual Studio.
