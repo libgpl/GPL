@@ -13,7 +13,7 @@ ou [VS2013](http://www.microsoft.com/en-us/download/details.aspx?id=44914);
 3. Descompacte o arquivo .zip baixado em uma pasta;
 4. Na pasta descompactada *GPL > projects*, crie uma cópia da pasta base_VS e renomeie-a com o nome de seu projeto;
 5. Acesse a pasta de seu projeto e abra o arquivo *base.vcxproj*;
-6. O Visual Studio se abrirá com seu projeto, contendo o código base a seguir:
+6. O Visual Studio se abrirá com seu projeto, contendo o código a seguir:
 
 ```C++
 #include <gpl.h>
