@@ -1,7 +1,7 @@
 #pragma once
-#include "ObjectGPL.hpp"
+#include "Object.hpp"
 
-class Audio : public ObjectGPL
+class Audio : public Object
 {
 protected:
 	int volume;

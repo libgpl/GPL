@@ -1,15 +1,15 @@
 #include "../include/Window.hpp"
 #include "../include/Panel.hpp"
 
+
 Window::Window(unsigned int width, unsigned int height, std::string windowTitle, bool showMouse, bool fullscreen)
 {
 	while((splashTime - tempo.asSeconds()) > 0)
 	{
 		tempo = relogio.getElapsedTime();
 	}
-	base = new Base();
 	// TODO: fechamento da janela do splash screen
-//	if(base->getWindow() != NULL) base->getWindow()->close();
+	//if(base->getWindow() != NULL) base->getWindow()->close();
 
 	// create the window
 	if(!fullscreen)	base->setWindow(new sf::RenderWindow(sf::VideoMode(width, height, 32), windowTitle, sf::Style::Close));
@@ -21,9 +21,8 @@ Window::Window(unsigned int width, unsigned int height, std::string windowTitle,
 	if(!showMouse) base->getWindow()->setMouseCursorVisible(false);
 	// TODO: descomentar isso
 	// Carrega a fonte padrão do sistema (Segoe UI)
-	//defaultText.load("calibri.ttf");
+	base->getDefaultText()->load("calibri.ttf");
 
-	// TODO: inicializar os gizmos, inputs, panel, etc. aqui passando a window pra eles
 }
 
 
@@ -55,9 +54,9 @@ Window::~Window(void)
 void Window::flush()
 {
 	// Exibindo o terminal somente em modo DEBUG
-	//#ifdef _DEBUG
-	//		if(	game.panel->getMessagePollSize() > 0) game.panel->Draw();
-	//#endif
+	#ifdef _DEBUG
+		if(	panel->getMessagePollSize() > 0) panel->Draw();
+	#endif
 
 	// check all the window's events that were triggered since the last iteration of the loop
 	while(base->getWindow()->pollEvent(event))
@@ -98,8 +97,7 @@ void Window::setIcon(std::string iconFile)
 
 	if(!icon.loadFromFile(file))
 	{
-		Panel *panel = new Panel();
-		panel->Debug("ERRO", "Arquivo de icone '"+iconFile+"' não encontrado");
+		panel->Debug("ERROR", "Arquivo de icone '"+iconFile+"' não encontrado");
 	}	
 	else
 	{

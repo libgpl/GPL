@@ -101,16 +101,16 @@ namespace Collision
         return true;
     }
 
-    sf::Vector2f GetSpriteCenter (const sf::Sprite& Object)
+    sf::Vector2f GetSpriteCenter (const sf::Sprite& object)
     {
-        sf::FloatRect AABB = Object.getGlobalBounds();
+        sf::FloatRect AABB = object.getGlobalBounds();
         return sf::Vector2f (AABB.left+AABB.width/2.f, AABB.top+AABB.height/2.f);
     }
 
-    sf::Vector2f GetSpriteSize (const sf::Sprite& Object)
+    sf::Vector2f GetSpriteSize (const sf::Sprite& object)
     {
-        sf::IntRect OriginalSize = Object.getTextureRect();
-        sf::Vector2f Scale = Object.getScale();
+        sf::IntRect OriginalSize = object.getTextureRect();
+        sf::Vector2f Scale = object.getScale();
         return sf::Vector2f (OriginalSize.width*Scale.x, OriginalSize.height*Scale.y);
     }
 
@@ -128,10 +128,10 @@ namespace Collision
     class OrientedBoundingBox // Used in the BoundingBoxTest
     {
     public:
-        OrientedBoundingBox (const sf::Sprite& Object) // Calculate the four points of the OBB from a transformed (scaled, rotated...) sprite
+        OrientedBoundingBox (const sf::Sprite& object) // Calculate the four points of the OBB from a transformed (scaled, rotated...) sprite
         {
-            sf::Transform trans = Object.getTransform();
-            sf::IntRect local = Object.getTextureRect();
+            sf::Transform trans = object.getTransform();
+            sf::IntRect local = object.getTextureRect();
             Points[0] = trans.transformPoint(0.f, 0.f);
             Points[1] = trans.transformPoint(local.width, 0.f);
             Points[2] = trans.transformPoint(local.width, local.height);

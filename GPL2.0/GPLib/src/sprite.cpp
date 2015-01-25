@@ -8,8 +8,6 @@ using namespace Collision;
 
 Sprite::Sprite(void):x(0),y(0),currentFrame(0),animationTime(30),alpha(255),mirror(false)
 {
-	base = new Base();
-	panel = new Panel();
 }
 
 Sprite::~Sprite(void)
@@ -23,9 +21,12 @@ void Sprite::load(std::string filename)
 	std::string file = "./assets/sprites/" + filename;
 	if(!(*frames.back()).loadFromFile(file))
 	{
-		panel->Debug("ERRO","Arquivo do sprite '"+filename+"' não encontrado");
+		std::string tete = "Arquivo do sprite '"+filename+"' não encontrado";
+		panel->Debug("ERROR",tete);
 	}		
 }
+
+
 
 void Sprite::load(std::string filename, unsigned int x, unsigned int y, unsigned int width, unsigned int height)
 {
@@ -34,7 +35,8 @@ void Sprite::load(std::string filename, unsigned int x, unsigned int y, unsigned
 	std::string file = "./assets/sprites/" + filename;
 	if(!(*frames.back()).loadFromFile(file, sf::IntRect(x, y, width, height)))
 	{
-		panel->Debug("ERRO","Arquivo do sprite '"+filename+"' não encontrado");
+		std::string tete = "Arquivo do sprite '"+filename+"' não encontrado";
+		panel->Debug("ERROR",tete);
 	}	
 }
 

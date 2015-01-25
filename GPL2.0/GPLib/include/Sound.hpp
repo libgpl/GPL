@@ -5,14 +5,13 @@
 
 #include <SFML/Audio/Sound.hpp>
 #include <SFML/Audio/SoundBuffer.hpp>
-#include "ObjectGPL.hpp"
 #include "Panel.hpp"
 #include "Audio.hpp"
 
-class Sound : public ObjectGPL, public Audio
+class Sound : public Audio
 {
 private:
-	Panel* panel;
+	//Panel* panel;
 	sf::SoundBuffer buffer;
 	sf::Sound _sound;
 public:

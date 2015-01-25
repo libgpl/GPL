@@ -6,7 +6,6 @@
 /// </summary>
 Sound::Sound(void)
 {
-	panel = new Panel();
 }
 
 
@@ -23,7 +22,7 @@ void Sound::load(std::string filename)
 	std::string file = "./assets/sounds/" + filename;
 	if(!buffer.loadFromFile(file))
 	{
-		panel->Debug("ERRO","Arquivo de som '"+filename+"' não encontrado");
+		panel->Debug("ERROR","Arquivo de som '"+filename+"' não encontrado");
 	}	
 
 	_sound.setBuffer(buffer);

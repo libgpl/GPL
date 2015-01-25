@@ -3,15 +3,14 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <iostream>
-//#include "ObjectGPL.hpp"
-#include "Base.hpp"
+#include "Object.hpp"
 
 
 
-class Text/* : public ObjectGPL*/
+class Text : public Object
 {
 private:
-	Base* base;
+	//Base* base;
 	sf::Font* font;
 	int x;
 	int y;

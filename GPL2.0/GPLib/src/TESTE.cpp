@@ -74,6 +74,7 @@ void meuContador()
 #include "../../include/Game.hpp"
 #include "../../include/Text.hpp"
 #include "../../include/Input.hpp"
+#include "../../include/GameObject.hpp"
 
 /*
 //////////////////////////////////////////////////////////////
@@ -102,9 +103,80 @@ void main()
 	Window game(800,600,"Minha Janela",true,false);	// Inicializa a biblioteca
 	Text text;
 	text.load("calibri.ttf");
+
+	unsigned int buttonCount = sf::Joystick::getButtonCount(0);
+	bool xx = sf::Joystick::hasAxis(0,sf::Joystick::Axis::PovX);
+	bool yy = sf::Joystick::hasAxis(0,sf::Joystick::Axis::PovY);
+
+	GameObject teste222;
+	((Sprite*)teste222.addComponent("Sprite"))->load("mouseascascasc.png");
 	while(true)
 	{
-		text.draw("alouussss",100,100,50);
+		Sprite* s = (Sprite*)teste222.getComponent("Sprite");
+			s->draw(10,10);
+		if (sf::Joystick::isConnected(0))
+		{
+//			text.draw("J0 conectado",100,100,50);
+		}
+		// is button 1 of joystick number 0 pressed?
+		if (sf::Joystick::isButtonPressed(0, sf::Joystick::V))
+		{
+			text.draw("V",100,100,50);
+		}
+		if (sf::Joystick::isButtonPressed(0, sf::Joystick::X))
+		{
+			text.draw("X",100,100,50);
+		}
+		if (sf::Joystick::isButtonPressed(0, sf::Joystick::R))
+		{
+			text.draw("R",100,100,50);
+		}
+		if (sf::Joystick::isButtonPressed(0, sf::Joystick::U))
+		{
+			text.draw("U",100,100,50);
+		}
+		if (sf::Joystick::isButtonPressed(0, sf::Joystick::Y))
+		{
+			text.draw("Y",100,100,50);
+		}
+		if (sf::Joystick::isButtonPressed(0, sf::Joystick::Z))
+		{
+			text.draw("Z",100,100,50);
+		}
+		if (sf::Joystick::isButtonPressed(0, sf::Joystick::PovX))
+		{
+			text.draw("PovX",100,100,50);
+		}
+		if (sf::Joystick::isButtonPressed(0, sf::Joystick::PovY))
+		{
+			text.draw("PovY",100,100,50);
+		}
+		if (sf::Joystick::isButtonPressed(0, 8))
+		{
+			text.draw("8",100,100,50);
+		}
+		if (sf::Joystick::isButtonPressed(0, 9))
+		{
+			text.draw("9",100,100,50);
+		}
+		if (sf::Joystick::isButtonPressed(0, 10))
+		{
+			text.draw("10",100,100,50);
+		}
+		for(int i = 0; i < 32; i++)
+		{
+		if (sf::Joystick::isButtonPressed(0, i))
+		{
+			text.draw("vai",150,150,50,255,0,0);
+		}
+		}
+
+		// what's the current position of the X and Y axes of joystick number 0?
+		float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
+		float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+
+		std::cout << x << " " << y << std::endl;
+		
 		game.flush();
 	}
 }

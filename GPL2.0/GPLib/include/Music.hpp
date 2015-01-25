@@ -4,10 +4,9 @@
 
 
 #include "../SFML/include/SFML/Audio.hpp"
-#include "ObjectGPL.hpp"
 #include "Audio.hpp"
 
-class Music : public ObjectGPL, public Audio
+class Music : public Audio
 {
 private:
 	sf::Music _music;

@@ -2,41 +2,47 @@
 
 Base::Base(void)
 {
-	if(!single)
-	{
-		single = new Base(true);
-	}
+	defaultText = new Text();
+	defaultText->load("calibri.ttf");
 }
+
+Base* Base::getInstance()
+{
+	if(!instance)
+	{
+		instance = new Base();
+	}
+	return instance;
+}
+
+
 Base::~Base(void)
 {
-	if(single)
+	if(instance)
 	{
-		delete single;
+		delete instance;
 	}
 }
 void Base::setWindow(_Window* window)
 {
-	if(!single)
-	{
-		single = new Base(true);
-	}
-	single->window = window;
+	getInstance();
+	instance->window = window;
 }
 
 _Window* Base::getWindow() const
 {
-	if(&single->window == NULL)
+	getInstance();
+	if(instance->window == NULL)
 	{
 		return NULL;
 	}
-	return single->window;
+	return instance->window;
 }
 
 std::string Base::getVersion() const
 {
+	getInstance();
 	return version;
 }
 
-
-Base* Base::single = 0;
-
+Base *Base::instance = NULL;

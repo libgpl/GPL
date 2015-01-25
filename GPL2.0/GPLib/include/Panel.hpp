@@ -2,14 +2,14 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include "ObjectGPL.hpp"
-#include "Base.hpp"
+#include "Object.hpp"
+
+#define panel Panel::getInstance()
 
 
-class Panel : public ObjectGPL
+class Panel : public Object
 {
 public:
-	Panel(void);
 	~Panel(void);
 
 	template <typename variable>
@@ -42,15 +42,21 @@ public:
 
 	void Draw();
 	int getMessagePollSize() const;
+
+	static Panel* getInstance();
+
 private:
+	Panel(void);
+
 	struct message
 	{
 		std::string key;
 		std::string value;
 	};
 
-	Base* base;
-	Panel(bool placebo){}
+	static Panel* instance;
+
+
+	//Base* base;
 	std::vector<message*> messagePoll;
-	static Panel* single;
 };

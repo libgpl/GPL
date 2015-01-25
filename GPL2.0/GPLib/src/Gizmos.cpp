@@ -3,8 +3,8 @@
 
 Gizmos::Gizmos()
 {
-	base = new Base();
 }
+
 
 Gizmos::~Gizmos(void)
 {

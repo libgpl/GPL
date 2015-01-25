@@ -15,8 +15,7 @@ void Music::load(std::string filename)
 	std::string file = "./assets/musics/" + filename;
 	if(!_music.openFromFile(file))
 	{
-		// TODO: arrumar isso
-		//debug("ERRO","Arquivo de música '"+filename+"' não encontrado");
+		panel->Debug("ERROR","Arquivo de música '"+filename+"' não encontrado");
 	}		
 }
 

@@ -5,18 +5,18 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "ObjectGPL.hpp"
+#include "Object.hpp"
 #include "Panel.hpp"
 #include "Base.hpp"
 //#include "../include/gpl.hpp"
 
 
 
-class Sprite : public ObjectGPL
+class Sprite : public Object
 {
 private:
-	Panel* panel;
-	Base* base;
+	//Panel* panel;
+	//Base* base;
 	int x;
 	int y;
 	int alpha;

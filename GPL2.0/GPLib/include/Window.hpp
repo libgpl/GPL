@@ -4,7 +4,6 @@
 
 
 //#include "gpl_include.hpp"
-#include "Base.hpp"
 #include "Sprite.hpp"
 
 
@@ -92,7 +91,7 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void splashScreen(Sprite splashSprite, unsigned int showTime = 5);
 private:
-	Base* base;
+	//Base* base;
 	int splashTime;
 	sf::Clock relogio;
 	sf::Time tempo;

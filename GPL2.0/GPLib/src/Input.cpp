@@ -2,8 +2,6 @@
 
 Input::Input(void)
 {
-	//base = new Base();
-
 	for(int i = 0; i < KEY::KeyCount; i++){
 		onPressed[i] = false;
 		onDownPressed[i] = false;
@@ -16,9 +14,21 @@ Input::Input(void)
 	}
 }
 
-
 Input::~Input(void)
 {
+	if(instance)
+	{
+		delete instance;
+	}
+}
+
+Input* Input::getInstance()
+{
+	if(!instance)
+	{
+		instance = new Input();
+	}
+	return instance;
 }
 
 //
@@ -145,17 +155,28 @@ bool Input::isButtonDownReleased(MOUSE _mouse){
 }
 
 // ---------- JOYSTICK ---------- 
-bool Input::isJoystickButtonHeld(MOUSE _mouse)
+bool Input::isJoystickButtonHeld(JOYSTICK _joystick)
+{
+	if(sf::Joystick::isButtonPressed(0, _joystick))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool Input::isJoystickButtonUp(JOYSTICK _joystick)
 {
 	return false;
 }
 
-bool Input::isJoystickButtonUp(MOUSE _mouse)
+bool Input::isJoystickButtonDown(JOYSTICK _joystick)
 {
 	return false;
 }
 
-bool Input::isJoystickButtonDown(MOUSE _mouse)
+bool isButtonDownReleasedJoysTick(JOYSTICK _joystick)
 {
 	return false;
 }
+
+Input* Input::instance = NULL;
