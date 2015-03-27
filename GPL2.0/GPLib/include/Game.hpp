@@ -43,17 +43,17 @@
 //		imagem1.draw(100,100);
 //		text.draw("vamos lá", 20,20,100);
 //		//panel.Debug("Teste","vamos lá");
-//		if(input.isKeyDown(KEY::Left))
+//		if(input.isDown(KEY::Left))
 //		{
 //			x++;
 //			cout << "LEFT DOWN" << endl << endl;
 //		}
-//		if(input.isKeyUp(KEY::Right))
+//		if(input.isUp(KEY::Right))
 //		{
 //			x--;
 //			cout << "RIGHT UP" << endl << endl;
 //		}
-//		if(input.isKeyHeld(KEY::Up))
+//		if(input.isPressed(KEY::Up))
 //		{
 //			cout << "UP HELD" << endl << endl;
 //		}

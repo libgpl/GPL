@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <sstream>
+
 #include <vector>
 #include "Object.hpp"
 
@@ -11,34 +11,13 @@ class Panel : public Object
 {
 public:
 	~Panel(void);
-
-	template <typename variable>
-	void Debug(std::string key, variable value)
-	{
-		std::string tempVar;
-		std::stringstream conv;
-		conv << value;
-		conv >> tempVar;
-
-		message* deb = NULL;
-		message* temp = NULL;
-		for(unsigned int i = 0; i < messagePoll.size(); i++)
-		{
-			temp = messagePoll[i];
-			if(temp->key == key && temp->key != "ERROR") deb = temp;
-		}
-		if(deb == NULL)
-		{
-			deb = new message;
-			deb->key = key;
-			deb->value = tempVar;
-			messagePoll.push_back(deb);
-		}
-		else
-		{
-			deb->value = tempVar;
-		}
-	}
+	
+	void Debug(std::string key, std::string value);
+	void Debug(std::string key, bool value);
+	void Debug(std::string key, int value);
+	void Debug(std::string key, double value);
+	void Debug(std::string key, float value);
+	void Debug(std::string key, char value);
 
 	void Draw();
 	int getMessagePollSize() const;

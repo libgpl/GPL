@@ -79,11 +79,11 @@ void meuContador()
 /*
 //////////////////////////////////////////////////////////////
 //							STATUS							//
-//	Input			Falta Joystick
+//	Input			Ok - Falta testar Joystick
 //	Gizmos			OK
 //	Text			Ok
-//	Panel			Aparentemente Ok, falta testar
-//		Debug		Função pertencente ao panel - falta resolver problema com o textDefault
+//	Panel			Ok
+//		Debug		Ok
 //		Inspector	Mostra informações sobre um objeto - não implementado
 //	Audio			Interface criada
 //	Sound			Aparentemente Ok, falta testar
@@ -92,14 +92,13 @@ void meuContador()
 //	Scene			Ver necessidade de implementação =D
 //	Métodos de retorno como const, para nao serem mudados.
 Sobrecarregar o operador << para escrita
-usar funções friends no lugar de static nos cpp's
 //////////////////////////////////////////////////////////////
 */
 void main()
 {
 	// Seção de carregamento de assets
 	meuContador();
-
+	
 	Window game(800,600,"Minha Janela",true,false);	// Inicializa a biblioteca
 	Text text;
 	text.load("calibri.ttf");

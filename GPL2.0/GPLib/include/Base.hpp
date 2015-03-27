@@ -7,7 +7,7 @@
 #include "Text.hpp"
 
 typedef sf::RenderWindow _Window;
-#define base Base::getInstance()
+#define base Base::getInstance();
 
 class Base
 {
@@ -16,7 +16,6 @@ private:
 	Base(void);
 
 
-	_Window* window;
 	std::string version;
 	static Base* instance;
 	Text* defaultText;

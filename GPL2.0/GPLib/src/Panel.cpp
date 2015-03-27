@@ -5,6 +5,7 @@
 
 #include "../include/Base.hpp"
 
+#include <sstream>
 
 Panel::Panel(void)
 {
@@ -29,8 +30,6 @@ Panel::~Panel(void)
 
 void Panel::Draw()
 {
-	//	base = Base();
-
 	// Desenha o retangulo
 	sf::RectangleShape retangulo(sf::Vector2f(base->getWindow()->getSize().x,78.0f));
 	retangulo.setOutlineThickness(2);
@@ -87,56 +86,83 @@ int Panel::getMessagePollSize() const
 	return messagePoll.size();
 }
 
+void Panel::Debug(std::string key, std::string value)
+{
+	//std::string tempVar;
+	//std::stringstream conv;
+	//conv << value;
+	//conv >> tempVar;
 
-//void debug(std::string key, bool value)
-//{
-//	std::string temp;
-//	std::stringstream conv;
-//	std::string booleano;
-//	if(value) booleano = "TRUE";
-//	else booleano = "FALSE";
-//
-//	conv << booleano;
-//	conv >> temp;
-//	debug(key,temp);
-//
-//}
+	message* deb = NULL;
+	message* temp = NULL;
+	for(unsigned int i = 0; i < messagePoll.size(); i++)
+	{
+		temp = messagePoll[i];
+		if(temp->key == key && temp->key != "ERROR") deb = temp;
+	}
+	if(deb == NULL)
+	{
+		deb = new message;
+		deb->key = key;
+		deb->value = value;
+		messagePoll.push_back(deb);
+	}
+	else
+	{
+		deb->value = value;
+	}
+}
 
-//void debug(std::string key, int value)
-//{
-//	std::string temp;
-//	std::stringstream conv;
-//	conv << value;
-//	conv >> temp;
-//	debug(key,temp);
-//}
+void Panel::Debug(std::string key, bool value)
+{
+	std::string temp;
+	std::stringstream conv;
+	std::string booleano;
+	if(value) booleano = "TRUE";
+	else booleano = "FALSE";
+
+	conv << booleano;
+	conv >> temp;
+	Debug(key,temp);
+
+}
+
+void Panel::Debug(std::string key, int value)
+{
+	std::string temp;
+	std::stringstream conv;
+	conv << value;
+	conv >> temp;
+	Debug(key,temp);
+}
 
 
-//void debug(std::string key, double value)
-//{
-//	std::string temp;
-//	std::stringstream conv;
-//	conv << value;
-//	conv >> temp;
-//	debug(key,temp);
-//}
-//
-//void debug(std::string key, float value)
-//{
-//	std::string temp;
-//	std::stringstream conv;
-//	conv << value;
-//	conv >> temp;
-//	debug(key,temp);
-//}
-//
-//void debug(std::string key, char value)
-//{
-//	std::string temp;
-//	std::stringstream conv;
-//	conv << value;
-//	conv >> temp;
-//	debug(key,temp);
-//}
+void Panel::Debug(std::string key, double value)
+{
+	std::string temp;
+	std::stringstream conv;
+	conv << value;
+	conv >> temp;
+	Debug(key,temp);
+}
+
+void Panel::Debug(std::string key, float value)
+{
+	std::string temp;
+	std::stringstream conv;
+	conv << value;
+	conv >> temp;
+	Debug(key,temp);
+}
+
+void Panel::Debug(std::string key, char value)
+{
+	std::string temp;
+	std::stringstream conv;
+	conv << value;
+	conv >> temp;
+	Debug(key,temp);
+}
+
 
 Panel *Panel::instance = NULL;

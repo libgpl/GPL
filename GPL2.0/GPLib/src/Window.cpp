@@ -8,8 +8,8 @@ Window::Window(unsigned int width, unsigned int height, std::string windowTitle,
 	{
 		tempo = relogio.getElapsedTime();
 	}
-	// TODO: fechamento da janela do splash screen
-	//if(base->getWindow() != NULL) base->getWindow()->close();
+	 //TODO: fechamento da janela do splash screen
+	if(base->getWindow() != NULL) base->getWindow()->close();
 
 	// create the window
 	if(!fullscreen)	base->setWindow(new sf::RenderWindow(sf::VideoMode(width, height, 32), windowTitle, sf::Style::Close));
