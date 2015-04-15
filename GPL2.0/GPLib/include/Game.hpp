@@ -38,11 +38,11 @@
 //
 //	void run()
 //	{
-//		panel->Debug("Tesssssste", "vamosss ver");
+//		panel->debug("Tesssssste", "vamosss ver");
 //		imagem2.draw(x,y);
 //		imagem1.draw(100,100);
 //		text.draw("vamos lá", 20,20,100);
-//		//panel.Debug("Teste","vamos lá");
+//		//panel.debug("Teste","vamos lá");
 //		if(input.isDown(KEY::Left))
 //		{
 //			x++;
@@ -63,7 +63,7 @@
 //		}
 //		gizmos.line(100,100,200);
 //		// TODO: arrumar problema com template na classe de debug
-//		//spanel.Debug("Teste","testeeeeee");
+//		//spanel.debug("Teste","testeeeeee");
 //		// Lógica do Jogo
 //	}
 //	void unload()

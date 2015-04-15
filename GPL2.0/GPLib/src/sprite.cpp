@@ -6,8 +6,10 @@
 
 using namespace Collision;
 
-Sprite::Sprite(void):x(0),y(0),currentFrame(0),animationTime(30),alpha(255),mirror(false)
+Sprite::Sprite(void):x(0),currentFrame(0),animationTime(30),alpha(255),mirror(false)
 {
+
+	y = base->getWindow()->getSize().y;
 }
 
 Sprite::~Sprite(void)
@@ -22,7 +24,7 @@ void Sprite::load(std::string filename)
 	if(!(*frames.back()).loadFromFile(file))
 	{
 		std::string tete = "Arquivo do sprite '"+filename+"' não encontrado";
-		panel->Debug("ERROR",tete);
+		panel->debug("ERROR",tete);
 	}		
 }
 
@@ -36,7 +38,7 @@ void Sprite::load(std::string filename, unsigned int x, unsigned int y, unsigned
 	if(!(*frames.back()).loadFromFile(file, sf::IntRect(x, y, width, height)))
 	{
 		std::string tete = "Arquivo do sprite '"+filename+"' não encontrado";
-		panel->Debug("ERROR",tete);
+		panel->debug("ERROR",tete);
 	}	
 }
 
@@ -111,7 +113,7 @@ void Sprite::draw(int x, int y, bool mirror, int alpha, unsigned int angle, bool
 	{
 		this->x = x;
 		this->y = y;
-		_sprite.setPosition(sf::Vector2f((float)x,(float)y));
+		_sprite.setPosition(sf::Vector2f((float)x,base->getWindow()->getSize().y-(float)y));
 	}
 
 	if(edge)

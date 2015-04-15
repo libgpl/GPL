@@ -12,12 +12,12 @@ class Panel : public Object
 public:
 	~Panel(void);
 	
-	void Debug(std::string key, std::string value);
-	void Debug(std::string key, bool value);
-	void Debug(std::string key, int value);
-	void Debug(std::string key, double value);
-	void Debug(std::string key, float value);
-	void Debug(std::string key, char value);
+	void debug(std::string key, std::string value);
+	void debug(std::string key, bool value);
+	void debug(std::string key, int value);
+	void debug(std::string key, double value);
+	void debug(std::string key, float value);
+	void debug(std::string key, char value);
 
 	void Draw();
 	int getMessagePollSize() const;

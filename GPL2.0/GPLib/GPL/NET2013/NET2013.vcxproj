@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -21,7 +21,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -59,7 +59,7 @@
       <AdditionalIncludeDirectories>..\..\SFML\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib />
@@ -92,23 +92,33 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\gpl.cpp" />
-    <ClCompile Include="..\..\src\gplObj.cpp" />
+    <ClCompile Include="..\..\src\Base.cpp" />
+    <ClCompile Include="..\..\src\Collision.cpp" />
+    <ClCompile Include="..\..\src\Window.cpp" />
+    <ClCompile Include="..\..\src\Gizmos.cpp" />
+    <ClCompile Include="..\..\src\Object.cpp" />
     <ClCompile Include="..\..\src\Input.cpp" />
-    <ClCompile Include="..\..\src\music.cpp" />
-    <ClCompile Include="..\..\src\sound.cpp" />
-    <ClCompile Include="..\..\src\sprite.cpp" />
-    <ClCompile Include="..\..\src\text.cpp" />
+    <ClCompile Include="..\..\src\Music.cpp" />
+    <ClCompile Include="..\..\src\Panel.cpp" />
+    <ClCompile Include="..\..\src\Sound.cpp" />
+    <ClCompile Include="..\..\src\Sprite.cpp" />
+    <ClCompile Include="..\..\src\TESTE.cpp" />
+    <ClCompile Include="..\..\src\Text.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\gpl.h" />
-    <ClInclude Include="..\..\include\gplObj.h" />
-    <ClInclude Include="..\..\include\gpl_include.h" />
-    <ClInclude Include="..\..\include\Input.h" />
-    <ClInclude Include="..\..\include\music.h" />
-    <ClInclude Include="..\..\include\sound.h" />
-    <ClInclude Include="..\..\include\sprite.h" />
-    <ClInclude Include="..\..\include\text.h" />
+    <ClInclude Include="..\..\include\Audio.hpp" />
+    <ClInclude Include="..\..\include\Base.hpp" />
+    <ClInclude Include="..\..\include\Collision.hpp" />
+    <ClInclude Include="..\..\include\Window.hpp" />
+    <ClInclude Include="..\..\include\Gizmos.hpp" />
+    <ClInclude Include="..\..\include\Object.hpp" />
+    <ClInclude Include="..\..\include\gpl.hpp" />
+    <ClInclude Include="..\..\include\Input.hpp" />
+    <ClInclude Include="..\..\include\Music.hpp" />
+    <ClInclude Include="..\..\include\Panel.hpp" />
+    <ClInclude Include="..\..\include\Sound.hpp" />
+    <ClInclude Include="..\..\include\Sprite.hpp" />
+    <ClInclude Include="..\..\include\Text.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

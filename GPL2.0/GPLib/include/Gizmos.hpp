@@ -65,6 +65,5 @@ public:
 	/// <param name="A">			(Opcional) Opacidade (0 - 255), padrão = 255. </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void circle(int x, int y, int radius, int thickness = 1, int R = 255, int G = 255, int B = 255, int A = 255);
-
 };
 

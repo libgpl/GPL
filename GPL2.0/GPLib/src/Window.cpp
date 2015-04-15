@@ -9,8 +9,10 @@ Window::Window(unsigned int width, unsigned int height, std::string windowTitle,
 		tempo = relogio.getElapsedTime();
 	}
 	 //TODO: fechamento da janela do splash screen
-	if(base->getWindow() != NULL) base->getWindow()->close();
-
+	//if(base->getWindow() != NULL)
+	//{
+	//		base->getWindow()->close();
+	//}
 	// create the window
 	if(!fullscreen)	base->setWindow(new sf::RenderWindow(sf::VideoMode(width, height, 32), windowTitle, sf::Style::Close));
 	else			base->setWindow(new sf::RenderWindow(sf::VideoMode(width, height, 32), windowTitle, sf::Style::Fullscreen));
@@ -97,7 +99,7 @@ void Window::setIcon(std::string iconFile)
 
 	if(!icon.loadFromFile(file))
 	{
-		panel->Debug("ERROR", "Arquivo de icone '"+iconFile+"' não encontrado");
+		panel->debug("ERROR", "Arquivo de icone '"+iconFile+"' não encontrado");
 	}	
 	else
 	{
@@ -106,7 +108,7 @@ void Window::setIcon(std::string iconFile)
 
 }
 
-void Window::splashScreen(Sprite splashSprite, unsigned int showTime)
+/*void Window::splashScreen(Sprite splashSprite, unsigned int showTime)
 {
 	splashTime = showTime;
 
@@ -125,7 +127,7 @@ void Window::splashScreen(Sprite splashSprite, unsigned int showTime)
 
 	base->getWindow()->display();
 }
-
+*/
 int Window::getFPS()
 {    
 	static int frameCounter = 0;
@@ -149,7 +151,7 @@ void Window::setFPS(unsigned int fps)
 }
 
 // TODO: tirar estes dois métodos daqui
-void Window::gplSleep(int milisec)
+void Window::sleep(int milisec)
 {
 	sf::sleep(sf::milliseconds(milisec));
 }

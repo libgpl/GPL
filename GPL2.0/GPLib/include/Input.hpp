@@ -6,7 +6,7 @@
 typedef sf::Keyboard::Key KEY;
 typedef sf::Mouse::Button MOUSE;
 
-enum JOYSTICK {RIGHT_UP, RIGHT_DOWN, RIGHT_LEFT, RIGHT_RIGHT, L1, R1, L2, R2, SELECT, START, LEFT_STICK, RIGHT_STICK, AXIS_X, AXIX_Y, UP, DOWN, LEFT, RIGHT};
+enum JOYSTICK {RIGHT_UP, RIGHT_RIGHT, RIGHT_DOWN, RIGHT_LEFT, L1, R1, L2, R2, SELECT, START, LEFT_STICK, RIGHT_STICK, AXIS_X, AXIX_Y, UP, DOWN, LEFT, RIGHT};
 enum PLAYER {PLAYER_1, PLAYER_2};
 
 #define input Input::getInstance()
@@ -28,6 +28,10 @@ public:
 	bool isPressed(JOYSTICK _joystick, PLAYER _player);
 	bool isUp(JOYSTICK _joystick, PLAYER _player);
 	bool isDown(JOYSTICK _joystick, PLAYER _player);
+
+	int getMouseX();
+	int getMouseY();
+	int getMouseScroll();
 
 	static Input* getInstance();
 private:
@@ -57,4 +61,5 @@ private:
 	bool isKeyDownReleased(KEY _key);
 	bool isButtonDownReleased(MOUSE _mouse);
 	bool isButtonDownReleasedJoysTick(JOYSTICK _joystick, PLAYER _player);
+
 };

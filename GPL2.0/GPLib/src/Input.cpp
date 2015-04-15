@@ -1,4 +1,7 @@
 #include "../include/Input.hpp"
+#include "../include/Base.hpp"
+
+sf::Event event;
 
 Input::Input(void)
 {
@@ -210,6 +213,25 @@ bool Input::isButtonDownReleasedJoysTick(JOYSTICK _joystick, PLAYER _player)
 		return true;		
 	}
 	return false;
+}
+
+int Input::getMouseY()
+{
+	return base->getWindow()->getSize().y-sf::Mouse::getPosition(*base->getWindow()).y;
+}
+
+int Input::getMouseX()
+{
+	return sf::Mouse::getPosition(*base->getWindow()).x;
+}
+
+int Input::getMouseScroll()
+{
+	if (event.type == sf::Event::MouseWheelMoved)
+	{
+		return event.mouseWheel.delta;
+	}
+	else return 0;
 }
 
 Input* Input::instance = NULL;

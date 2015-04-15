@@ -73,7 +73,7 @@ public:
 	///
 	/// <param name="milisec">	tempo em milisegundos que o programa ficará parado. </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	void gplSleep(int milisec);
+	void sleep(int milisec);
 
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,7 +89,7 @@ public:
 	/// 						jpg, gif, psd, hdr, pic) </param>
 	/// <param name="showTime">	(Opcional) Tempo mínimo de exibiçao, padrão 5 segundos </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	void splashScreen(Sprite splashSprite, unsigned int showTime = 5);
+	//void splashScreen(Sprite splashSprite, unsigned int showTime = 5);
 private:
 	//Base* base;
 	int splashTime;

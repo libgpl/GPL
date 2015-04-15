@@ -15,14 +15,14 @@ void Music::load(std::string filename)
 	std::string file = "./assets/musics/" + filename;
 	if(!_music.openFromFile(file))
 	{
-		panel->Debug("ERROR","Arquivo de música '"+filename+"' não encontrado");
+		panel->debug("ERROR","Arquivo de música '"+filename+"' não encontrado");
 	}		
 }
 
 void Music::play(int volume, bool repeat)
 {
 	if(this->volume != volume) _music.setVolume((float)volume);
-	if(this->repeat != repeat) _music.setLoop((float)repeat);
+	if(this->repeat != repeat) _music.setLoop(repeat);
 	_music.play();
 }
 

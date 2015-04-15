@@ -19,7 +19,7 @@ void Text::load(std::string filename)
 
 	if(!font->loadFromFile(file))
 	{
-		panel->Debug("ERROR","Arquivo de fonte '"+filename+"' não encontrado");
+		panel->debug("ERROR","Arquivo de fonte '"+filename+"' não encontrado");
 	}	
 
 	this->text.setFont(*font);
@@ -37,7 +37,7 @@ void Text::draw(std::string text, int x, int y, unsigned int size, unsigned int 
 	{
 		this->x = x;
 		this->y = y;
-		this->text.setPosition(sf::Vector2f((float)x,(float)y));
+		this->text.setPosition(sf::Vector2f((float)x,base->getWindow()->getSize().y-(float)y));
 	}
 
 	if(this->size != size)

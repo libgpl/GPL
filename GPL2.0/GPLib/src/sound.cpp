@@ -22,7 +22,7 @@ void Sound::load(std::string filename)
 	std::string file = "./assets/sounds/" + filename;
 	if(!buffer.loadFromFile(file))
 	{
-		panel->Debug("ERROR","Arquivo de som '"+filename+"' não encontrado");
+		panel->debug("ERROR","Arquivo de som '"+filename+"' não encontrado");
 	}	
 
 	_sound.setBuffer(buffer);
@@ -36,7 +36,7 @@ void Sound::load(std::string filename)
 void Sound::play(int volume, bool repeat)
 {
 	if(this->volume != volume) _sound.setVolume((float)volume);
-	if(this->repeat != repeat) _sound.setLoop((float)repeat);
+	if(this->repeat != repeat) _sound.setLoop(repeat);
 	_sound.play();
 }
 
