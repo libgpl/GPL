@@ -5,31 +5,24 @@ sf::Event event;
 
 Input::Input(void)
 {
-	for(int i = 0; i < KEY::KeyCount; i++){
-		onPressed[i] = false;
-		onDownPressed[i] = false;
-		timer[i] = 0;
-	}
-	for(int i = 0; i < MOUSE::ButtonCount; i++){
-		onPressedMouse[i] = false;
-		onDownPressedMouse[i] = false;
-		mouseTimer[i] = 0;
-	}
+	keyDown.resize(sf::Keyboard::KeyCount);
+	keyUp.resize(sf::Keyboard::KeyCount, true);
 
-	for(int i = 0; i < sf::Joystick::ButtonCount; i++){
-		onPressedJoystick[PLAYER_1][i] = false;
-		onDownPressedJoystick[PLAYER_1][i] = false;
-		joystickTimer[PLAYER_1][i] = 0;
+	buttonDown.resize(sf::Mouse::ButtonCount);
+	buttonUp.resize(sf::Mouse::ButtonCount, true);
 
-		onPressedJoystick[PLAYER_2][i] = false;
-		onDownPressedJoystick[PLAYER_2][i] = false;
-		joystickTimer[PLAYER_2][i] = 0;
+	joyUp.resize(PLAYER::PLAYER_COUNT);
+	joyDown.resize(PLAYER::PLAYER_COUNT);
+	for (unsigned int i = 0; i < joyUp.size(); i++)
+	{
+		joyUp.at(i).resize(JOYSTICK::JOYSTICK_COUNT);
+		joyDown.at(i).resize(JOYSTICK::JOYSTICK_COUNT, true);
 	}
 }
 
 Input::~Input(void)
 {
-	if(instance)
+	if (instance)
 	{
 		delete instance;
 	}
@@ -37,138 +30,97 @@ Input::~Input(void)
 
 Input* Input::getInstance()
 {
-	if(!instance)
+	if (!instance)
 	{
 		instance = new Input();
 	}
 	return instance;
 }
 
-//
-//	bool Input::anyKeyPressed(){
-//
-//	for(int i = 0; i < KEY::KeyCount; i++){
-//		if(isPressed(KEY(i))){			
-//			return true;			
-//		}	
-//	}	
-//	return false;
-//}
-//bool Input::anyButtonPressed(){
-//	
-//	for(int i = 0; i < MOUSE::ButtonCount; i++){
-//		if(isPressed(MOUSE(i))){				
-//			return false;
-//		}
-//	}
-//	return false;
-//	
-//}
 
-bool Input::isPressed(KEY key)
+// ---------- KEYBOARD ---------- 
+bool Input::isPressed(KEY _key)
 {
-	if(sf::Keyboard::isKeyPressed(key))
+	if (sf::Keyboard::isKeyPressed(_key))
 	{
 		return true;
 	}
 	return false;
 }
 
-bool Input::isPressed(MOUSE mouse)
-{
-	if (sf::Mouse::isButtonPressed(mouse))
-	{
-		return true;
-	}	
-	return false;
-}
-
-bool Input::isKeyDownReleased(KEY _key){	
-
-	if(isPressed(_key)){			
-		onDownPressed[_key] = true;			
-		return false;
-	}	
-	if(onDownPressed[_key] && !isPressed(_key)){			
-		onDownPressed[_key] = false;	
-		return true;		
-	}	
-	return false;
-}
-
 bool Input::isUp(KEY _key)
-{	
-	if(isPressed(_key)){			
-		onPressed[_key] = true;			
-		return false;
-	}	
-	if(onPressed[_key] && !isPressed(_key)){			
-		onPressed[_key] = false;	
-		return true;		
-	}	
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(_key)) && keyUp.at(_key))
+	{
+		keyUp.at(_key) = false;
+	}
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key(_key)) && !keyUp.at(_key))
+	{
+		keyUp.at(_key) = true;
+		return true;
+	}
 	return false;
 }
 
 
 bool Input::isDown(KEY _key)
 {
-	if(isPressed(_key)){
-		timer[_key]++;
-		if(timer[_key] == 1){
-			return true;
-		}	
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(_key)) && !keyDown.at(_key))
+	{
+		keyDown.at(_key) = true;
+		return true;
 	}
-	if(isKeyDownReleased(_key)){
-		timer[_key] = 0;
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key(_key)))
+	{
+		keyDown.at(_key) = false;
+	}
+	return false;
+}
+
+
+// ---------- MOUSE ---------- 
+bool Input::isPressed(MOUSE _mouse)
+{
+	if (sf::Mouse::isButtonPressed(_mouse))
+	{
+		return true;
 	}
 	return false;
 }
 
 bool Input::isUp(MOUSE _mouse)
 {
-	if(isPressed(_mouse)){			
-		onPressedMouse[_mouse] = true;		
-		return false;
-	}	
-	if(onPressedMouse[_mouse] && !isPressed(_mouse)){		
-		onPressedMouse[_mouse] = false;	
-		return true;		
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button(_mouse)) && buttonUp.at(_mouse))
+	{
+		buttonUp.at(_mouse) = false;
+	}
+	if (!sf::Mouse::isButtonPressed(sf::Mouse::Button(_mouse)) && !buttonUp.at(_mouse))
+	{
+		buttonUp.at(_mouse) = true;
+		return true;
 	}
 	return false;
 }
 
 bool Input::isDown(MOUSE _mouse){
 
-	if(isPressed(_mouse)){
-		mouseTimer[_mouse]++;
-		if(mouseTimer[_mouse] == 1){
-			return true;
-		}	
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button(_mouse)) && !buttonDown.at(_mouse))
+	{
+		buttonDown.at(_mouse) = true;
+		return true;
 	}
-	if(isPressed(_mouse)){
-		mouseTimer[_mouse] = 0;
-	}
-	return false;
-}
-
-
-bool Input::isButtonDownReleased(MOUSE _mouse){	
-
-	if(isPressed(_mouse)){			
-		onDownPressedMouse[_mouse] = true;		
-		return false;
-	}	
-	if(onDownPressedMouse[_mouse] && !isPressed(_mouse)){		
-		onDownPressedMouse[_mouse] = false;	
-		return true;		
+	if (!sf::Mouse::isButtonPressed(sf::Mouse::Button(_mouse)))
+	{
+		buttonDown.at(_mouse) = false;
 	}
 	return false;
 }
+
 
 // ---------- JOYSTICK ---------- 
 bool Input::isPressed(JOYSTICK _joystick, PLAYER _player)
 {
-	if(sf::Joystick::isButtonPressed(_player, _joystick))
+	if (sf::Joystick::isButtonPressed(_player, _joystick))
 	{
 		return true;
 	}
@@ -177,52 +129,46 @@ bool Input::isPressed(JOYSTICK _joystick, PLAYER _player)
 
 bool Input::isUp(JOYSTICK _joystick, PLAYER _player)
 {
-	if(isPressed(_joystick,_player)){			
-		onPressedJoystick[_player][_joystick] = true;		
-		return false;
-	}	
-	if(onPressedJoystick[_player][_joystick] && !isPressed(_joystick,_player)){		
-		onPressedJoystick[_player][_joystick] = false;	
-		return true;		
+	if (sf::Joystick::isButtonPressed(_player, _joystick) && joyUp.at(_player).at(_joystick))
+	{
+		joyUp.at(_player).at(_joystick) = false;
 	}
-	return false;
+	if (!sf::Joystick::isButtonPressed(_player, _joystick) && !joyUp.at(_player).at(_joystick))
+	{
+		joyUp.at(_player).at(_joystick) = true;
+		return true;
+	}
 }
 
 bool Input::isDown(JOYSTICK _joystick, PLAYER _player)
 {
-	if(isPressed(_joystick, _player)){
-		joystickTimer[_player][_joystick]++;
-		if(joystickTimer[_player][_joystick] == 1){
-			return true;
-		}	
+	if (sf::Joystick::isButtonPressed(_player, _joystick) && !joyDown.at(_player).at(_joystick))
+	{
+		joyDown.at(_player).at(_joystick) = true;
+		return true;
 	}
-	if(isButtonDownReleasedJoysTick(_joystick,_player)){
-		joystickTimer[_player][_joystick] = 0;
-	}
-	return false;
-}
-
-bool Input::isButtonDownReleasedJoysTick(JOYSTICK _joystick, PLAYER _player)
-{
-	if(isPressed(_joystick,_player)){			
-		onDownPressedJoystick[_player][_joystick] = true;		
-		return false;
-	}	
-	if(onDownPressedJoystick[_player][_joystick] && !isPressed(_joystick,_player)){		
-		onDownPressedJoystick[_player][_joystick] = false;	
-		return true;		
+	if (!sf::Joystick::isButtonPressed(_player, _joystick))
+	{
+		joyDown.at(_player).at(_joystick) = false;
 	}
 	return false;
 }
 
 int Input::getMouseY()
 {
-	return base->getWindow()->getSize().y-sf::Mouse::getPosition(*base->getWindow()).y;
+	return base->getWindow()->getSize().y - sf::Mouse::getPosition(*base->getWindow()).y;
 }
 
 int Input::getMouseX()
 {
 	return sf::Mouse::getPosition(*base->getWindow()).x;
+}
+
+int Input::GetMouseAngle(int x, int y)
+{
+	x -= getMouseX();
+	y -= getMouseY();
+	return (int)(std::atan2(x, y)*(180 / 3.14));
 }
 
 int Input::getMouseScroll()

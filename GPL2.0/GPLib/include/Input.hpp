@@ -6,8 +6,8 @@
 typedef sf::Keyboard::Key KEY;
 typedef sf::Mouse::Button MOUSE;
 
-enum JOYSTICK {RIGHT_UP, RIGHT_RIGHT, RIGHT_DOWN, RIGHT_LEFT, L1, R1, L2, R2, SELECT, START, LEFT_STICK, RIGHT_STICK, AXIS_X, AXIX_Y, UP, DOWN, LEFT, RIGHT};
-enum PLAYER {PLAYER_1, PLAYER_2};
+enum JOYSTICK { RIGHT_UP, RIGHT_RIGHT, RIGHT_DOWN, RIGHT_LEFT, L1, R1, L2, R2, SELECT, START, LEFT_STICK, RIGHT_STICK, AXIS_X, AXIX_Y, UP, DOWN, LEFT, RIGHT, JOYSTICK_COUNT };
+enum PLAYER { PLAYER_1, PLAYER_2, PLAYER_COUNT };
 
 #define input Input::getInstance()
 
@@ -32,6 +32,7 @@ public:
 	int getMouseX();
 	int getMouseY();
 	int getMouseScroll();
+	int GetMouseAngle(int x, int y);
 
 	static Input* getInstance();
 private:
@@ -39,27 +40,17 @@ private:
 
 	static Input* instance;
 
+	//Keyboard
+	std::vector<bool> keyDown;
+	std::map<MOUSE, bool> keyverify;
+	std::vector<bool> keyUp;
 
-	// Teclado
-	bool onPressed[KEY::KeyCount];
-	bool onDownPressed[KEY::KeyCount];
+	//Mouse
+	std::vector<bool> buttonDown;
+	std::vector<bool> buttonUp;
 
-	// Mouse
-	bool onPressedMouse[MOUSE::ButtonCount];
-	bool onDownPressedMouse[MOUSE::ButtonCount];
-
-	// Joystick
-	bool onPressedJoystick[2][sf::Joystick::ButtonCount];
-	bool onDownPressedJoystick[2][sf::Joystick::ButtonCount];
-
-
-	int joystickTimer[2][sf::Joystick::ButtonCount];
-
-	int timer[KEY::KeyCount];
-	int mouseTimer[MOUSE::ButtonCount];
-
-	bool isKeyDownReleased(KEY _key);
-	bool isButtonDownReleased(MOUSE _mouse);
-	bool isButtonDownReleasedJoysTick(JOYSTICK _joystick, PLAYER _player);
+	//Joystick
+	std::vector<std::vector<bool>> joyUp;
+	std::vector<std::vector<bool>> joyDown;
 
 };
