@@ -14,8 +14,8 @@ Obs.: O método **flush()** deve ser a última coisa a ser chamada dentro do loo
 Isto se faz necessário, pois este método irá desenha na tela todos os objetos as atualizações realizadas 
 durante a iteração do loop.
 
-Exemplo - Criação de uma janela com os parâmetros padrões, 800 pixels de largura e 600 pixels de altura
-
+Exemplo - Criação de uma janela com os parâmetros padrões, 800 pixels de largura e 600 pixels de altura em fullscreen
+Obs.: Todas as imagens devem estar dentro da pasta *assets/sprites/*
 ```C++
 void main()
 {
