@@ -4,7 +4,7 @@
     
     **Obs: A versão Express do Visual Studio é GRÁTIS**
     
-    Links:
+    Link:
 [VS2013](http://www.microsoft.com/en-us/download/details.aspx?id=44914);
 
 2. Baixe e salve o pacote *.zip* que contém o biblioteca GPL [link](https://github.com/libgpl/GPL/archive/master.zip);
