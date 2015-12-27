@@ -8,7 +8,7 @@ Window(int width, int height, string windowTitle, bool showMouse, bool fullscree
 
 * *width* é a largura da janela em pixels (valor padrão 800 px); 
 * *height* é a altura da janela em pixels (valor padrão 600 px);
-* *windowTitle* é o nome da janela        (valor padrão 'GPL Game');
+* *windowTitle* é o nome da janela        (valor padrão 'Window Name');
 * *showMouse* é um booleano que determina se o cursor do mouse será exibido (valor padrão true);
 * *fullscreen* é um booleano que determina se o jogo será em tela cheia ou modo janela (valor padrão true);
 
