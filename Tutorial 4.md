@@ -166,8 +166,8 @@ void main()
 	// LOOP PRINCIPAL DO JOGO
 	// Enquanto a tecla 'ESC' não for pressionada
 	while (!input->isPressed(KEY::Escape))
-{ 
-janela.flush();
-}
+	{ 
+		janela.flush();
+	}
 }
 ```
