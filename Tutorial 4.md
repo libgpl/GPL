@@ -1,3 +1,5 @@
+#Entradas#
+
 Neste tutorial, iremos explicar como utilizar entradas para controlar as interações do usuário com o jogo.
 
 Para usar o teclado, mouse e joystick, utilizaremos a classe *input*.
@@ -150,7 +152,7 @@ Obs.: Uma especificidade do joystick é a definição do controle do Player 1 ou
 * PLAYER::PLAYER_1
 * PLAYER::PLAYER_2
 
-Exemplo: Quando pressionar a tecla ESC sai do jogo.
+#Exemplo: Quando pressionar a tecla ESC sai do jogo#
 ```C++
 #include "gpl.hpp"
 
