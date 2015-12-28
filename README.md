@@ -17,7 +17,7 @@ Escrita em C++, a GPL preza pela facilidade, provendo suporte à funcionalidades
 
   - Rendering de sprites
   - Rendering de textos (com fontes .ttf)
-  - Reprodução de áudio (.wav, .mp3, .ogg, outros)
+  - Reprodução de áudio (.wav, .ogg, outros)
   - Captura de inputs (teclado, mouse e joystick)
   - Funções para testes de colisão
 
@@ -39,20 +39,29 @@ Mande um email para 'libgpl@gmail.com' contendo um vídeo ou um link com imagens
 1. [Criando um projeto da GPL no Visual Studio](Tutorial 1.md)
 2. [Criando uma Janela](Tutorial 2.md)
 3. [Colocando uma imagem como background](Tutorial 3.md)
-4. Colocando PAUSE em seu jogo (Em breve)
-5. "Alo Mundo" (Em breve)
-6. Criando tela de introdução e Game Over (Em breve)
-7. Fazendo um personagem mover-se pelo teclado (Em breve)
-8. Teclado (Em breve)
-9. Mouse (Em breve)
-10. Joystick (Em breve)
-11. Sprites (Em breve)
-12. Colisões (Em breve)
-13. Audio (Em breve)
-14. Tempo (Em breve)
-15. Classe Window (Em breve)
-16. Classe GameObject (Em breve)
-17. Classe Physics (Em breve)
+4. [Entradas (Teclado, Mouse e Joystick)](Tutorial 4.md)
+
+. Colocando PAUSE em seu jogo (Em breve)
+
+. "Alo Mundo" (Em breve)
+
+. Criando tela de introdução e Game Over (Em breve)
+
+. Fazendo um personagem mover-se pelo teclado (Em breve)
+
+. Sprites (Em breve)
+
+. Colisões (Em breve)
+
+. Audio (Em breve)
+
+. Tempo (Em breve)
+
+. Classe Window (Em breve)
+
+. Classe GameObject (Em breve)
+
+. Classe Physics (Em breve)
 
 ##Tutoriais Avançados
 1. Mapa com indexação sequêncial (Em breve)
