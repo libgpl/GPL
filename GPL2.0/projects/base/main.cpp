@@ -3,12 +3,10 @@
 void main()
 {
 	// Cria a janela
-	Window janela(800, 600, "Minha Janela", true, false);
+	Window janela(800, 600,"Minha Janela", true, false);
 
 	// Seção de carregamento dos assets
-
-
-
+	
 	// LOOP PRINCIPAL DO JOGO
 	// Enquanto a tecla 'ESC' não for pressionada
 	while (!input->isPressed(KEY::Escape))

@@ -99,7 +99,7 @@ void meuContador()
 #include "..\..\include\Music.hpp"
 #include "..\..\include\Sound.hpp"
 
-Gizmos *gizmos = new Gizmos();
+static Gizmos *gizmos = new Gizmos();
 
 //#include "Input.hpp"
 //#include "Panel.hpp"

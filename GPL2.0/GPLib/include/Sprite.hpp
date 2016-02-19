@@ -46,7 +46,7 @@ public:
 	/// <param name="filename">	Caminho do arquivo da sprite a ser carregado (bmp, png, tga, jpg, gif, psd, hdr, pic)</param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void load(std::string filename);
-
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>
 	/// Carrega parte de um arquivo de sprite
@@ -84,15 +84,25 @@ public:
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Desenha o sprite. </summary>	///
+	/// <param name="pos">	 	Posição X e Y. </param>
+	/// <param name="scale">	(Optional) Escala X e Y </param>
+	/// <param name="alpha"> 	(Optional) Transparência </param>
+	/// <param name="angle"> 	(Optional) (Opcional) angulo, padrão é 0. </param>
+	/// <param name="edge">  	(Optional) (Opcional) desenhar borda no sprite, padrão é não. </param>
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	void draw(Vector2 pos, Vector2 scale = Vector2(1.0, 1.0), unsigned int alpha = 255, unsigned int angle = 0, bool edge = false);
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>	Desenha o sprite. </summary>	///
 	/// <param name="x">	 	Posição X. </param>
 	/// <param name="y">	 	Posição Y. </param>
-	/// <param name="mirror">	(Optional) Espalhamento </param>
+	/// <param name="mirror">	(Optional) Espelhamento </param>
 	/// <param name="alpha"> 	(Optional) Transparência </param>
 	/// <param name="angle"> 	(Optional) (Opcional) angulo, padrão é 0. </param>
 	/// <param name="edge">  	(Optional) (Opcional) desenhar borda no sprite, padrão é não. </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	void draw(int x, int y, bool mirror = false, int alpha = 255, unsigned int angle = 0, bool edge = false);
+	void draw(int x, int y, bool mirror = false, unsigned int alpha = 255, unsigned int angle = 0, bool edge = false);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Sets a frame. </summary>
@@ -102,6 +112,13 @@ public:
 	/// <param name="frame">	The frame. </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void setFrame(int frame);
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>	Gets the current frame. </summary>
+	///
+	/// <remarks>	Nesi, 19/02/2016. </remarks>
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	int Sprite::getFrame();
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Verifica se o sprite colidiu com outro sprite. </summary>

@@ -63,7 +63,7 @@ Sobrecarregar o operador << para escrita
 #include "..\..\GPLib\include\Music.hpp"
 #include "..\..\GPLib\include\Sound.hpp"
 
-Gizmos *gizmos = new Gizmos();
+static Gizmos *gizmos = new Gizmos();
 
 //#include "Input.hpp"
 //#include "Panel.hpp"

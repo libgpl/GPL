@@ -67,10 +67,68 @@ void Sprite::setFrame(int frame)
 	currentFrame = frame;
 }
 
-void Sprite::draw(int x, int y, bool mirror, int alpha, unsigned int angle, bool edge)
+int Sprite::getFrame()
+{
+	return currentFrame;
+}
+
+
+void Sprite::draw(Vector2 pos, Vector2 scale, unsigned int alpha, unsigned int angle, bool edge)
 {
 	// Define a opacidade da imagem
-	if(this->alpha != alpha)
+	{
+		// Aplica os limites inferior e superior para alpha (0-255)
+		this->alpha = (this->alpha < 0) ? 0 : alpha;
+		this->alpha = (this->alpha > 255) ? 255 : alpha;
+
+		_sprite.setColor(sf::Color(255, 255, 255, this->alpha));
+	}
+
+	_sprite.setScale(scale.x, scale.y);
+
+	_sprite.setTexture((*frames.at(currentFrame)));
+
+	timer = clk.getElapsedTime();
+
+	if (timer.asMilliseconds() > animationTime)
+	{
+		currentFrame++;
+		if (currentFrame == frames.size()) currentFrame = 0;
+		clk.restart();
+	}
+
+	if (this->angle != angle)
+	{
+		this->angle = angle;
+		_sprite.setOrigin(getResX() / 2, getResY() / 2);
+		_sprite.setRotation((float)angle); // absolute angle
+	}
+
+	if (this->x != x || this->y != y)
+	{
+		this->x = x;
+		this->y = y;
+		_sprite.setPosition(sf::Vector2f((float)x, base->getWindow()->getSize().y - (float)y));
+	}
+
+	if (edge)
+	{
+		sf::RectangleShape retangulo(sf::Vector2f((float)((*_sprite.getTexture()).getSize().x), (float)(*_sprite.getTexture()).getSize().y));
+		retangulo.setOutlineThickness((float)3);
+		retangulo.setFillColor(sf::Color(0, 0, 0, 0));
+		retangulo.setOutlineColor(sf::Color(255, 0, 0));
+		retangulo.setPosition(_sprite.getPosition().x, _sprite.getPosition().y);
+		retangulo.setRotation(_sprite.getRotation());
+		base->getWindow()->draw(retangulo);
+	}
+
+	base->getWindow()->draw(_sprite);
+}
+
+
+void Sprite::draw(int x, int y, bool mirror, unsigned int alpha, unsigned int angle, bool edge)
+{
+	// Define a opacidade da imagem
 	{
 		// Aplica os limites inferior e superior para alpha (0-255)
 		this->alpha = (this->alpha < 0) ? 0 : alpha;
@@ -106,6 +164,7 @@ void Sprite::draw(int x, int y, bool mirror, int alpha, unsigned int angle, bool
 	if(this->angle != angle)
 	{
 		this->angle = angle;
+		_sprite.setOrigin(getResX() / 2, getResY() / 2);
 		_sprite.setRotation((float)angle); // absolute angle
 	}
 
