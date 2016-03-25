@@ -7,8 +7,13 @@ class Gizmos : public Object
 private:
 	//Base* base;
 public:
+	int qtdX;
+	int qtdY;
 	Gizmos();
 	~Gizmos(void);
+
+	void grid(int x, int y, int R = 255, int G = 255, int B = 255, int A = 255);
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Desenha um pixel. </summary>
 	///

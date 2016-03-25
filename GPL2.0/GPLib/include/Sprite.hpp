@@ -17,6 +17,10 @@ class Sprite : public Object
 private:
 	//Panel* panel;
 	//Base* base;
+	int x_pivot;
+	int y_pivot;
+	int x_scale;
+	int y_scale;
 	int x;
 	int y;
 	int alpha;
@@ -41,23 +45,25 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	~Sprite(void);
 
+	void loadSpriteSheet(std::string Filename, int qtdX, int qtdY);
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Carrega arquivo de sprite </summary>
-	/// <param name="filename">	Caminho do arquivo da sprite a ser carregado (bmp, png, tga, jpg, gif, psd, hdr, pic)</param>
+	/// <param name="Filename">	Caminho do arquivo da sprite a ser carregado (bmp, png, tga, jpg, gif, psd, hdr, pic)</param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	void load(std::string filename);
+	void load(std::string Filename);
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>
 	/// Carrega parte de um arquivo de sprite
 	/// </summary>
-	/// <param name="filename">	Caminho do arquivo da sprite a ser carregado (bmp, png, tga, jpg, gif, psd, hdr, pic)</param>
+	/// <param name="Filename">	Caminho do arquivo da sprite a ser carregado (bmp, png, tga, jpg, gif, psd, hdr, pic)</param>
 	/// <param name="x">	   	Posição X de inicio do recorte. </param>
 	/// <param name="y">	   	Posição Y de inicio do recorte. </param>
 	/// <param name="width">   	Largura do recorte. </param>
 	/// <param name="height">  	Altura do recorte. </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	void load(std::string filename, unsigned int x, unsigned int y, unsigned int width, unsigned int height);
+	void load(std::string Filename, unsigned int x, unsigned int y, unsigned int width, unsigned int height);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>
@@ -84,28 +90,32 @@ public:
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Desenha o sprite. </summary>	///
-	/// <param name="pos">	 	Posição X e Y. </param>
-	/// <param name="scale">	(Optional) Escala X e Y </param>
-	/// <param name="alpha"> 	(Optional) Transparência </param>
-	/// <param name="angle"> 	(Optional) (Opcional) angulo, padrão é 0. </param>
-	/// <param name="edge">  	(Optional) (Opcional) desenhar borda no sprite, padrão é não. </param>
-	////////////////////////////////////////////////////////////////////////////////////////////////////
-	void draw(Vector2 pos, Vector2 scale = Vector2(1.0, 1.0), unsigned int alpha = 255, unsigned int angle = 0, bool edge = false);
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////
-	/// <summary>	Desenha o sprite. </summary>	///
 	/// <param name="x">	 	Posição X. </param>
 	/// <param name="y">	 	Posição Y. </param>
-	/// <param name="mirror">	(Optional) Espelhamento </param>
+	/// <param name="scaleX">	Escala X. </param>
+	/// <param name="scaleY">	Escala Y. </param>
+	/// <param name="pivotX">	Pivô X. </param>
+	/// <param name="pivotY">	Pivô Y. </param>
 	/// <param name="alpha"> 	(Optional) Transparência </param>
-	/// <param name="angle"> 	(Optional) (Opcional) angulo, padrão é 0. </param>
-	/// <param name="edge">  	(Optional) (Opcional) desenhar borda no sprite, padrão é não. </param>
+	/// <param name="angle"> 	(Opcional) angulo, padrão é 0. </param>
+	/// <param name="edge">  	(Opcional) desenhar borda no sprite, padrão é não. </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
+	void draw(int x, int y, float scaleX = 1.0, float scaleY = 1.0, int pivotX = 0, int pivotY = 0, unsigned int alpha = 255, unsigned int angle = 0, bool edge = false);
 
-	void draw(int x, int y, bool mirror = false, unsigned int alpha = 255, unsigned int angle = 0, bool edge = false);
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	///// <summary>	Desenha o sprite. </summary>	///
+	///// <param name="x">	 	Posição X. </param>
+	///// <param name="y">	 	Posição Y. </param>
+	///// <param name="mirror">	(Optional) Espelhamento </param>
+	///// <param name="alpha"> 	(Optional) Transparência </param>
+	///// <param name="angle"> 	(Optional) angulo, padrão é 0. </param>
+	///// <param name="edge">  	(Optional) desenhar borda no sprite, padrão é não. </param>
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//void draw(int x, int y, bool mirror = false, unsigned int alpha = 255, unsigned int angle = 0, bool edge = false);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	/// <summary>	Sets a frame. </summary>
+	/// <summary>	Set a frame. </summary>
 	///
 	/// <remarks>	Nesi, 03/09/2014. </remarks>
 	///

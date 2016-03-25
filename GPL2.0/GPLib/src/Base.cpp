@@ -1,9 +1,9 @@
 #include "../include/Base.hpp"
 
-Base::Base(void)
+Base::Base(void) : version("2.1.30")
 {
 	defaultText = new Text();
-	defaultText->load("calibri.ttf");
+	defaultText->load("..\\..\\..\\..\\GPLib\\resources\\calibri.ttf");
 }
 
 Base* Base::getInstance()

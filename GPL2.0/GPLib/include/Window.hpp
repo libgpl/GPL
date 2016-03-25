@@ -6,6 +6,44 @@
 //#include "gpl_include.hpp"
 #include "Sprite.hpp"
 
+//struct SplashScreen
+//{
+//	int splashTime;
+//	sf::Time tempo;
+//	sf::Clock relogio;
+//
+//	SplashScreen(Sprite splashSprite, unsigned int showTime)
+//	{
+//		splashTime = showTime;
+//
+//		// create the window
+//		base->setWindow(new sf::RenderWindow(sf::VideoMode(splashSprite.getResX(), splashSprite.getResY(), 32), "", sf::Style::None));
+//
+//		base->getWindow()->setActive();
+//		tempo.Zero;
+//
+//		base->getWindow()->setVerticalSyncEnabled(true);
+//		base->getWindow()->setFramerateLimit(60); // Setting max framerate to 60 (Facultative)}
+//
+//		base->getWindow()->setMouseCursorVisible(false);
+//
+//
+//		while (5 - tempo.asSeconds() > 0)
+//		{
+//			tempo = relogio.getElapsedTime();
+//
+//			splashSprite.draw(splashSprite.getResX() / 2, splashSprite.getResY()/2);
+//			base->getWindow()->display();
+//		}
+//		
+//
+//		base->getWindow()->close();
+//		//if (!base->getWindow()->isOpen())
+//		//{
+//		//	exit(0);
+//		//}
+//	}
+//};
 
 class Window
 {
@@ -22,6 +60,8 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	Window(unsigned int width = 800, unsigned int height = 600, std::string windowTitle = "Window Name", bool showMouse = true, bool fullscreen = true);
 	~Window(void);
+
+
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Retorna a versão da biblioteca GPL. </summary>
@@ -85,7 +125,7 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Cria uma Splash Screen. </summary>
 	///
-	/// <param name="filename">	Caminho do arquivo do sprite da splash a ser carregada (bmp, png, tga,
+	/// <param name="Filename">	Caminho do arquivo do sprite da splash a ser carregada (bmp, png, tga,
 	/// 						jpg, gif, psd, hdr, pic) </param>
 	/// <param name="showTime">	(Opcional) Tempo mínimo de exibiçao, padrão 5 segundos </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////

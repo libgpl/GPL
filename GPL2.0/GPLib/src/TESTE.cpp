@@ -1,10 +1,10 @@
-#include "../../include/gpl.hpp"
+#include "../../include/gpl"
 
 
 void main()
 {
 	// Seção de carregamento de assets
-	meuContador();
+	//meuContador();
 
 	
 	Window game(800,600,"Minha Janela",true,false);	// Inicializa a biblioteca

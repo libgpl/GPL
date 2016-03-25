@@ -11,7 +11,6 @@ enum PLAYER { PLAYER_1, PLAYER_2, PLAYER_COUNT };
 
 #define input Input::getInstance()
 
-
 class Input : public Object
 {
 public:
@@ -34,10 +33,11 @@ public:
 	int getMouseScroll();
 	int GetMouseAngle(int x, int y);
 
+	void mouseSnap(int x, int y);
+
 	static Input* getInstance();
 private:
 	Input();
-
 	static Input* instance;
 
 	//Keyboard
@@ -46,6 +46,8 @@ private:
 	std::vector<bool> keyUp;
 
 	//Mouse
+	unsigned int snapDistanceX;
+	unsigned int snapDistanceY;
 	std::vector<bool> buttonDown;
 	std::vector<bool> buttonUp;
 

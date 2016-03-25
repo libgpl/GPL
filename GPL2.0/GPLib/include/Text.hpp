@@ -38,9 +38,9 @@ public:
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Carrega um arquivo de fonte para o texto </summary>
-	/// <param name="filename">Caminho do arquivo de fonte a ser carregado (TrueType, Type 1, CFF, OpenType, SFNT, X11 PCF, Windows FNT, BDF, PFR, Type 42)</param>
+	/// <param name="Filename">Caminho do arquivo de fonte a ser carregado (TrueType, Type 1, CFF, OpenType, SFNT, X11 PCF, Windows FNT, BDF, PFR, Type 42)</param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	void load(std::string filename);
+	void load(std::string Filename);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Desenha o texto </summary>

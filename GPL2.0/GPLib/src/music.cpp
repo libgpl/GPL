@@ -10,12 +10,12 @@ Music::~Music(void)
 {
 }
 
-void Music::load(std::string filename)
+void Music::load(std::string Filename)
 {
-	std::string file = "./assets/musics/" + filename;
-	if(!_music.openFromFile(file))
+	std::string File = "./assets/musics/" + Filename;
+	if(!_music.openFromFile(File))
 	{
-		panel->debug("ERROR","Arquivo de música '"+filename+"' não encontrado");
+		panel->debug("ERROR","Arquivo de música '"+Filename+"' não encontrado");
 	}		
 }
 

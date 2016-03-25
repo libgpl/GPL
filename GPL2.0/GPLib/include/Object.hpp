@@ -3,31 +3,31 @@
 //#include "Text.hpp"
 
 
-struct Vector2 final
-{
-	float x, y;
-	Vector2(float x, float y)
-	{
-		this->x = x;
-		this->y = y;
-	}
-};
+//struct Vector2
+//{
+//	float x, y;
+//	Vector2(float x, float y)
+//	{
+//		this->x = x;
+//		this->y = y;
+//	}
+//};
 
-float distance(Vector2 a, Vector2 b)
+static float distance(int aX, int aY, int bX, int bY)
 {
-	return sqrt(pow(a.x - b.x, 2) + pow(a.y - b.y, 2));
+	return sqrt(pow(aX - bX, 2) + pow(aY - bY, 2));
 }
 
-struct Vector3 final
-{
-	float x, y, z;
-	Vector3(float x, float y, float z)
-	{
-		this->x = x;
-		this->y = y;
-		this->z = z;
-	}
-};
+//struct Vector3 final
+//{
+//	float x, y, z;
+//	Vector3(float x, float y, float z)
+//	{
+//		this->x = x;
+//		this->y = y;
+//		this->z = z;
+//	}
+//};
 
 
 class Object

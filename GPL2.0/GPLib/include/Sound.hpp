@@ -30,10 +30,10 @@ public:
 	/// <summary>
 	/// Carrega um arquivo de som
 	/// </summary>
-	/// <param name="filename">	Caminho do arquivo de som a ser carregado (ogg, wav, flac, aiff, au, raw, paf, svx, nist, voc, ircam, w64,
+	/// <param name="Filename">	Caminho do arquivo de som a ser carregado (ogg, wav, flac, aiff, au, raw, paf, svx, nist, voc, ircam, w64,
 	/// mat4, mat5 pvf, htk, sds, avr, sd2, caf, wve, mpc2k, rf64) </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	void load(std::string filename) override;
+	void load(std::string Filename) override;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Começa a tocar o som</summary>

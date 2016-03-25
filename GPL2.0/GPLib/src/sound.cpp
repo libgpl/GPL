@@ -17,12 +17,12 @@ Sound::~Sound(void)
 /// Carrega um arquivo de Sound (ogg, wav, flac, aiff, au, raw, paf, svx, nist, voc, ircam, w64, mat4, mat5 pvf, htk, sds, avr, sd2, caf, wve, mpc2k, rf64)
 /// </summary>
 /// <param name="arquivo">Caminho do arquivo de Sound a ser carregado</param>
-void Sound::load(std::string filename)
+void Sound::load(std::string Filename)
 {
-	std::string file = "./assets/sounds/" + filename;
-	if(!buffer.loadFromFile(file))
+	std::string File = "./assets/sounds/" + Filename;
+	if(!buffer.loadFromFile(File))
 	{
-		panel->debug("ERROR","Arquivo de som '"+filename+"' não encontrado");
+		panel->debug("ERROR","Arquivo de som '"+Filename+"' não encontrado");
 	}	
 
 	_sound.setBuffer(buffer);

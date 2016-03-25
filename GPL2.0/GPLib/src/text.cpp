@@ -11,15 +11,15 @@ Text::~Text(void)
 {
 }
 
-void Text::load(std::string filename)
+void Text::load(std::string Filename)
 {
 	font = new sf::Font();
-	std::string file;
-	file = "./assets/fonts/" + filename;
+	std::string File;
+	File = "./assets/fonts/" + Filename;
 
-	if(!font->loadFromFile(file))
+	if(!font->loadFromFile(File))
 	{
-		panel->debug("ERROR","Arquivo de fonte '"+filename+"' não encontrado");
+		panel->debug("ERROR","Arquivo de fonte '"+Filename+"' não encontrado");
 	}	
 
 	this->text.setFont(*font);

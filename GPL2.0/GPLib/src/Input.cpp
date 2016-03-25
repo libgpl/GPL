@@ -1,9 +1,13 @@
 #include "../include/Input.hpp"
 #include "../include/Base.hpp"
+#include "../include/Gizmos.hpp"
+
+//#include <iostream>
+using namespace std;
 
 sf::Event event;
 
-Input::Input(void)
+Input::Input(void) : snapDistanceX(1), snapDistanceY(1)
 {
 	keyDown.resize(sf::Keyboard::KeyCount);
 	keyUp.resize(sf::Keyboard::KeyCount, true);
@@ -35,6 +39,12 @@ Input* Input::getInstance()
 		instance = new Input();
 	}
 	return instance;
+}
+
+void Input::mouseSnap(int x, int y)
+{
+	this->snapDistanceX = x;
+	this->snapDistanceY = y;
 }
 
 
@@ -120,6 +130,40 @@ bool Input::isDown(MOUSE _mouse){
 // ---------- JOYSTICK ---------- 
 bool Input::isPressed(JOYSTICK _joystick, PLAYER _player)
 {
+	////system("cls");
+	////cout << "X: " << sf::Joystick::getAxisPosition(_player, sf::Joystick::X) << endl;
+	////cout << "Y: " << sf::Joystick::getAxisPosition(_player, sf::Joystick::Y) << endl;
+
+	int X = sf::Joystick::getAxisPosition(_player, sf::Joystick::PovX);
+	int Y = sf::Joystick::getAxisPosition(_player, sf::Joystick::PovY);
+	if (_joystick == JOYSTICK::UP)
+	{
+		if (Y < -1)
+		{
+			return true;
+		}
+	}
+	else if (_joystick == JOYSTICK::DOWN)
+	{
+		if (X > 1)
+		{
+			return true;
+		}
+	}
+	if (_joystick == JOYSTICK::LEFT)
+	{
+		if (X < -1)
+		{
+			return true;
+		}
+	}
+	else if (_joystick == JOYSTICK::RIGHT)
+	{
+		if (X > 1)
+		{
+			return true;
+		}
+	}
 	if (sf::Joystick::isButtonPressed(_player, _joystick))
 	{
 		return true;
@@ -156,12 +200,14 @@ bool Input::isDown(JOYSTICK _joystick, PLAYER _player)
 
 int Input::getMouseY()
 {
-	return base->getWindow()->getSize().y - sf::Mouse::getPosition(*base->getWindow()).y;
+	int space = (base->getWindow()->getSize().y - sf::Mouse::getPosition(*base->getWindow()).y) / snapDistanceY;
+	return space * snapDistanceY;
 }
 
 int Input::getMouseX()
 {
-	return sf::Mouse::getPosition(*base->getWindow()).x;
+	int space = (sf::Mouse::getPosition(*base->getWindow()).x) / snapDistanceX;
+	return space * snapDistanceX;
 }
 
 int Input::GetMouseAngle(int x, int y)

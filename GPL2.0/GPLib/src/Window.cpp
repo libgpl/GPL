@@ -1,17 +1,19 @@
 #include "../include/Window.hpp"
 #include "../include/Panel.hpp"
 
-
 Window::Window(unsigned int width, unsigned int height, std::string windowTitle, bool showMouse, bool fullscreen)
 {
-	while((splashTime - tempo.asSeconds()) > 0)
-	{
-		tempo = relogio.getElapsedTime();
-	}
+
+
+	//base->setWindow(new sf::RenderWindow(sf::VideoMode(width, height, 32), windowTitle, sf::Style::Close));
+	//while(5 - tempo.asSeconds() > 0)
+	//{
+	//	tempo = relogio.getElapsedTime();
+	//}
 	 //TODO: fechamento da janela do splash screen
 	//if(base->getWindow() != NULL)
 	//{
-	//		base->getWindow()->close();
+	//	base->getWindow()->close();
 	//}
 	// create the window
 	if(!fullscreen)	base->setWindow(new sf::RenderWindow(sf::VideoMode(width, height, 32), windowTitle, sf::Style::Close));
@@ -23,7 +25,7 @@ Window::Window(unsigned int width, unsigned int height, std::string windowTitle,
 	if(!showMouse) base->getWindow()->setMouseCursorVisible(false);
 	// TODO: descomentar isso
 	// Carrega a fonte padrão do sistema (Segoe UI)
-	base->getDefaultText()->load("calibri.ttf");
+	base->getDefaultText()->load("..\\..\\..\\..\\GPLib\\resources\\calibri.ttf");
 
 }
 
@@ -31,6 +33,8 @@ Window::Window(unsigned int width, unsigned int height, std::string windowTitle,
 Window::~Window(void)
 {
 }
+
+
 
 //void Window::evolve(Game game)
 //{
@@ -95,9 +99,9 @@ void Window::setIcon(std::string iconFile)
 	// Define o icone da aplicação
 	sf::Image icon;
 
-	std::string file = "./assets/sprites/" + iconFile;
+	std::string File = "./assets/sprites/" + iconFile;
 
-	if(!icon.loadFromFile(file))
+	if(!icon.loadFromFile(File))
 	{
 		panel->debug("ERROR", "Arquivo de icone '"+iconFile+"' não encontrado");
 	}	
@@ -108,26 +112,7 @@ void Window::setIcon(std::string iconFile)
 
 }
 
-/*void Window::splashScreen(Sprite splashSprite, unsigned int showTime)
-{
-	splashTime = showTime;
 
-	// create the window
-	base->setWindow(new sf::RenderWindow(sf::VideoMode(splashSprite.getResX(), splashSprite.getResY(), 32), "", sf::Style::None));
-
-	base->getWindow()->setActive();
-	tempo.Zero;
-
-	base->getWindow()->setVerticalSyncEnabled(true); 
-	base->getWindow()->setFramerateLimit(60); // Setting max framerate to 60 (Facultative)}
-
-	base->getWindow()->setMouseCursorVisible(false);
-
-	splashSprite.draw(0,0);
-
-	base->getWindow()->display();
-}
-*/
 int Window::getFPS()
 {    
 	static int frameCounter = 0;

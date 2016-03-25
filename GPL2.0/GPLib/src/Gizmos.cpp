@@ -10,6 +10,24 @@ Gizmos::~Gizmos(void)
 {
 }
 
+void Gizmos::grid(int x, int y, int R, int G, int B, int A)
+{
+	qtdX = (base->getWindow()->getSize().x / x) + 1;
+	qtdY = (base->getWindow()->getSize().y / y) + 1;
+
+	for (int i = 0; i < qtdX; i++)
+	{
+		for (int j = 0; j < qtdY; j++)
+		{
+			pixel(i*x, -j*y + base->getWindow()->getSize().y, R, G, B, A);
+			pixel(i*x + 1, -j*y + base->getWindow()->getSize().y, R, G, B, A);
+			pixel(i*x, -j*y + 1 + base->getWindow()->getSize().y, R, G, B, A);
+			pixel(i*x + 1, -j*y + 1 + base->getWindow()->getSize().y, R, G, B, A);
+		}
+	}
+}
+
+
 void Gizmos::pixel(int x, int y, int R, int G, int B, int A)
 {
 	sf::RectangleShape retangulo(sf::Vector2f(1,1));
