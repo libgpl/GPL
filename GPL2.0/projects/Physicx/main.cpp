@@ -14,8 +14,8 @@ void main()
 	Sprite_ imagem;
 	imagem.load("minhaImagem.png");
 
-	imagem.setMass(0.1);
-	imagem.setFriction(10);
+	imagem.setMass(5);
+	imagem.setFriction(0.1);
 	
 	Sprite_ chao;
 	chao.load("chao.png");
@@ -30,18 +30,15 @@ void main()
 	// Enquanto a tecla 'ESC' não for pressionada
 	while (!input->isPressed(KEY::Escape))
 	{
-
-
 		// BLOCO DE COMANDOS
 		// Lógica do Jogo
 		imagem.draw(x, y);
 		chao.draw(xx,yy);
 
-
 		// Se o botão ESQUERDO do mouse foi pressionado o projétil é lançado no ângulo 
-		if (input->isPressed(KEY::Up))
+		if (input->isDown(KEY::Up))
 		{
-			imagem.rigidbody.shoot(50);
+			imagem.rigidbody.shoot(5);
 		}
 		if (input->isPressed(KEY::Left))
 		{
