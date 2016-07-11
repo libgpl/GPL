@@ -1,6 +1,5 @@
 #include "../include/Gizmos.hpp"
 
-
 Gizmos::Gizmos()
 {
 }
@@ -48,6 +47,18 @@ void Gizmos::line(int x, int y, int lenght, int thickness, int R, int G, int B, 
 	retangulo.setRotation((float)angle);
 	base->getWindow()->draw(retangulo);
 }
+
+void Gizmos::line2(int x1, int y1, int x2, int y2, int R, int G, int B, int A)
+{
+	sf::Vertex line2[] =
+	{
+		sf::Vertex(sf::Vector2f(x1,base->getWindow()->getSize().y - (float)y1),sf::Color(R, G, B, A)),
+		sf::Vertex(sf::Vector2f(x2,base->getWindow()->getSize().y - (float)y2),sf::Color(R, G, B, A)),
+	};
+
+	base->getWindow()->draw(line2, 2, sf::Lines);
+}
+
 
 void Gizmos::rectangle(int x, int y, int widht, int height, int thickness, int R, int G, int B, int A, int angle)
 {

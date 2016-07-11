@@ -14,7 +14,7 @@ public:
 	bool isHovered();
 	bool onRelease();
 	bool onClick();
-
+	Button() {};
 	Button(std::string filename);
 	~Button();
 

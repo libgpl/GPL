@@ -40,6 +40,8 @@ public:
 	/// <param name="angle">		(Opcional) Ângulo, padrão = 0 (zero) </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void line(int x, int y, int lenght, int thickness = 1, int R = 255, int G = 255, int B = 255, int A = 255, int angle = 0);
+	
+	void line2(int x1, int y1, int x2, int y2, int R = 255, int G = 255, int B = 255, int A = 255);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Desenha um retangulo. </summary>

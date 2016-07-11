@@ -30,6 +30,8 @@ private:
 	sf::Time timer;
 	sf::Clock clk;
     int currentFrame;
+	Text text;
+	std::string filename;
 
 	std::vector<sf::Texture*> frames;
 	sf::Sprite _sprite;

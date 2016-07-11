@@ -117,6 +117,8 @@
     <ClInclude Include="..\..\include\Button.hpp" />
     <ClInclude Include="..\..\include\Collision.hpp" />
     <ClInclude Include="..\..\include\File.hpp" />
+    <ClInclude Include="..\..\include\main.hpp" />
+    <ClInclude Include="..\..\include\MyGame.hpp" />
     <ClInclude Include="..\..\include\Parallax.h" />
     <ClInclude Include="..\..\include\SplashScreen.hpp" />
     <ClInclude Include="..\..\include\Timer.hpp" />
@@ -129,6 +131,7 @@
     <ClInclude Include="..\..\include\Sound.hpp" />
     <ClInclude Include="..\..\include\Sprite.hpp" />
     <ClInclude Include="..\..\include\Text.hpp" />
+    <ClInclude Include="..\..\include\_Game.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\include\gpl" />

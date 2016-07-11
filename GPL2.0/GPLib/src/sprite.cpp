@@ -18,6 +18,7 @@ Sprite::~Sprite(void)
 
 void Sprite::load(std::string Filename)
 {
+	filename = Filename;
 	frames.push_back(new sf::Texture());
 
 	std::string File = "./assets/sprites/" + Filename;
@@ -25,7 +26,9 @@ void Sprite::load(std::string Filename)
 	{
 		std::string tete = "Arquivo do sprite '"+Filename+"' não encontrado";
 		panel->debug("ERROR",tete);
-	}		
+		text.load("../../../../GPLib/resources/calibri.ttf");
+		frames.pop_back();
+	}
 }
 
 void Sprite::loadSpriteSheet(std::string Filename, int qtdX, int qtdY)
@@ -98,76 +101,83 @@ int Sprite::getFrame()
 
 void Sprite::draw(int x, int y, float scaleX, float scaleY, int pivotX, int pivotY, unsigned int alpha, unsigned int angle, bool edge)
 {
-	// Define a opacidade da imagem
+	// if frames are loaded
+	if (frames.size() > 0)
 	{
+
+
 		// Aplica os limites inferior e superior para alpha (0-255)
 		this->alpha = (this->alpha < 0) ? 0 : alpha;
 		this->alpha = (this->alpha > 255) ? 255 : alpha;
 
 		_sprite.setColor(sf::Color(255, 255, 255, this->alpha));
-	}
 
-	_sprite.setTexture((*frames.at(currentFrame)));
+		_sprite.setTexture((*frames.at(currentFrame)));
 
-	timer = clk.getElapsedTime();
+		timer = clk.getElapsedTime();
 
-	if (timer.asMilliseconds() > animationTime)
-	{
-		currentFrame++;
-		if (currentFrame == frames.size()) currentFrame = 0;
-		clk.restart();
-	}
-
-	if (this->x_pivot != pivotX || this->y_pivot != pivotY)
-	{
-		this->x_pivot = pivotX;
-		this->y_pivot = pivotY;
-		_sprite.setOrigin(x_pivot,y_pivot);
-	}
-
-	if (this->x_scale != scaleX || this->y_scale != scaleY)
-	{
-		this->x_scale = scaleX;
-		this->y_scale = scaleY;
-		_sprite.setScale(scaleX, scaleY);
-	}
-
-	if (this->angle != angle)
-	{
-		while (angle > 360)
+		if (timer.asMilliseconds() > animationTime)
 		{
-			angle -= 360;
-		}
-		while (angle < 0)
-		{
-			angle += 360;
+			currentFrame++;
+			if (currentFrame == frames.size()) currentFrame = 0;
+			clk.restart();
 		}
 
-		this->angle = angle;
-		_sprite.setRotation((float)this->angle); // absolute angle
-	}
+		if (this->x_pivot != pivotX || this->y_pivot != pivotY)
+		{
+			this->x_pivot = pivotX;
+			this->y_pivot = pivotY;
+			_sprite.setOrigin(x_pivot, y_pivot);
+		}
 
-	if (this->x != x || this->y != y)
+		if (this->x_scale != scaleX || this->y_scale != scaleY)
+		{
+			this->x_scale = scaleX;
+			this->y_scale = scaleY;
+			_sprite.setScale(scaleX, scaleY);
+		}
+
+		if (this->angle != angle)
+		{
+			while (angle > 360)
+			{
+				angle -= 360;
+			}
+			while (angle < 0)
+			{
+				angle += 360;
+			}
+
+			this->angle = angle;
+			_sprite.setRotation((float)this->angle); // absolute angle
+		}
+
+		if (this->x != x || this->y != y)
+		{
+			this->x = x;
+			this->y = y;
+			_sprite.setPosition(sf::Vector2f((float)x, base->getWindow()->getSize().y - (float)y));
+		}
+
+		if (edge)
+		{
+			sf::RectangleShape retangulo(sf::Vector2f((float)((*_sprite.getTexture()).getSize().x), (float)(*_sprite.getTexture()).getSize().y));
+			retangulo.setOutlineThickness((float)3);
+			retangulo.setFillColor(sf::Color(0, 0, 0, 0));
+			retangulo.setOutlineColor(sf::Color(255, 0, 0));
+			retangulo.setPosition(_sprite.getPosition().x, _sprite.getPosition().y);
+			retangulo.setRotation(_sprite.getRotation());
+			retangulo.setScale(scaleX, scaleY);
+			retangulo.setOrigin(x_pivot, y_pivot);
+			base->getWindow()->draw(retangulo);
+		}
+
+		base->getWindow()->draw(_sprite);
+	}
+	else
 	{
-		this->x = x;
-		this->y = y;
-		_sprite.setPosition(sf::Vector2f((float)x, base->getWindow()->getSize().y - (float)y));
+		text.draw(filename, x, y, 10, 255, 0, 0);
 	}
-
-	if (edge)
-	{
-		sf::RectangleShape retangulo(sf::Vector2f((float)((*_sprite.getTexture()).getSize().x), (float)(*_sprite.getTexture()).getSize().y));
-		retangulo.setOutlineThickness((float)3);
-		retangulo.setFillColor(sf::Color(0, 0, 0, 0));
-		retangulo.setOutlineColor(sf::Color(255, 0, 0));
-		retangulo.setPosition(_sprite.getPosition().x, _sprite.getPosition().y);
-		retangulo.setRotation(_sprite.getRotation());
-		retangulo.setScale(scaleX, scaleY);
-		retangulo.setOrigin(x_pivot, y_pivot);
-		base->getWindow()->draw(retangulo);
-	}
-
-	base->getWindow()->draw(_sprite);
 }
 
 

@@ -12,7 +12,6 @@ typedef sf::RenderWindow _Window;
 class Base
 {
 private:
-	//Base(bool placebo){}
 	Base(void);
 
 	_Window *window;

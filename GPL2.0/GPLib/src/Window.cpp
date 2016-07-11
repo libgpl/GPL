@@ -3,7 +3,10 @@
 
 Window::Window(unsigned int width, unsigned int height, std::string windowTitle, bool showMouse, bool fullscreen)
 {
-
+	this->width = width;
+	this->height = height;
+	this->windowTitle = windowTitle;
+	this->fullscreen = fullscreen;
 
 	//base->setWindow(new sf::RenderWindow(sf::VideoMode(width, height, 32), windowTitle, sf::Style::Close));
 	//while(5 - tempo.asSeconds() > 0)
@@ -141,7 +144,37 @@ void Window::sleep(int milisec)
 	sf::sleep(sf::milliseconds(milisec));
 }
 
-std::string Window::gplVersion()
+std::string Window::gplVersion() const
 {
 	return base->getVersion();
+}
+
+
+
+
+
+void Window::resizeWindow(int width, int height)
+{
+	if (this->width != width || this->height != height)
+	{
+		this->width = width;
+		this->height = height;
+		base->getWindow()->setSize(sf::Vector2u(width, height));
+	}
+}
+
+void Window::setWindowFullscreen()
+{
+	fullscreen = !fullscreen;
+	if (!fullscreen) {
+		base->getWindow()->close();
+		base->setWindow(new sf::RenderWindow(sf::VideoMode(width, height, 32), windowTitle, sf::Style::Close));
+		base->getWindow()->setSize(sf::Vector2u(width, height));
+	}
+	else
+	{
+		base->getWindow()->close();
+		base->setWindow(new sf::RenderWindow(sf::VideoMode(width, height, 32), windowTitle, sf::Style::Fullscreen));
+		base->getWindow()->setSize(sf::Vector2u(width, height));
+	}
 }

@@ -2,7 +2,6 @@
 
 Object::Object(void)
 {
-
 }
 
 

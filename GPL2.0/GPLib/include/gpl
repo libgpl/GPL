@@ -77,6 +77,7 @@ Sobrecarregar o operador << para escrita
 #include "Timer.hpp"
 #include "Parallax.hpp"
 #include "Button.hpp"
+#include "MyGame.hpp"
 
 static Gizmos *gizmos = new Gizmos();
 

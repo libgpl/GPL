@@ -68,7 +68,7 @@ public:
 	///
 	/// <returns>	std::string da versão. </returns>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	std::string gplVersion();
+	std::string gplVersion() const;
 
 	//void evolve(Game game);
 
@@ -130,11 +130,18 @@ public:
 	/// <param name="showTime">	(Opcional) Tempo mínimo de exibiçao, padrão 5 segundos </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	//void splashScreen(Sprite splashSprite, unsigned int showTime = 5);
+
+	void resizeWindow(int width, int height);
+	void setWindowFullscreen();
 private:
+	int height;
+	int width;
+	std::string windowTitle;
 	//Base* base;
 	int splashTime;
 	sf::Clock relogio;
 	sf::Time tempo;
 	sf::Event event;
+	bool fullscreen;
 };
 
