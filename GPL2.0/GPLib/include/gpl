@@ -78,9 +78,10 @@ Sobrecarregar o operador << para escrita
 #include "Parallax.hpp"
 #include "Button.hpp"
 #include "MyGame.hpp"
+#include "Ease.hpp"
 
 static Gizmos *gizmos = new Gizmos();
-
+static Ease *ease = new Ease();
 
 
 //#include "Input.hpp"

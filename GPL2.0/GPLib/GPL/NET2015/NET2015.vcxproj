@@ -96,6 +96,7 @@
     <ClCompile Include="..\..\src\Base.cpp" />
     <ClCompile Include="..\..\src\Button.cpp" />
     <ClCompile Include="..\..\src\Collision.cpp" />
+    <ClCompile Include="..\..\src\Ease.cpp" />
     <ClCompile Include="..\..\src\File.cpp" />
     <ClCompile Include="..\..\src\Parallax.cpp" />
     <ClCompile Include="..\..\src\SplashScreen.cpp" />
@@ -116,6 +117,7 @@
     <ClInclude Include="..\..\include\Base.hpp" />
     <ClInclude Include="..\..\include\Button.hpp" />
     <ClInclude Include="..\..\include\Collision.hpp" />
+    <ClInclude Include="..\..\include\Ease.hpp" />
     <ClInclude Include="..\..\include\File.hpp" />
     <ClInclude Include="..\..\include\main.hpp" />
     <ClInclude Include="..\..\include\MyGame.hpp" />
