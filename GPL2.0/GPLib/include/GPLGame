@@ -1,0 +1,38 @@
+#pragma once
+
+//namespace nomain {
+
+#include "gpl"
+#include "_Game.hpp"
+#ifdef GameFile 
+#define GameFile 1
+#define Game namespace _MyGame
+
+
+	namespace _MyGame {
+
+		class MyGame : public _Game
+		{
+		public:
+			MyGame()
+			{
+			}
+			~MyGame()
+			{
+			}
+			void Start();
+			void Update();
+			void Finish();
+		};
+		MyGame *t = new MyGame();
+	}
+#include "main.hpp"
+#endif 
+
+
+
+#define Start() MyGame::Start()
+#define Update() MyGame::Update()
+#define Finish() MyGame::Finish()
+
+//};

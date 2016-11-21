@@ -1,3 +1,32 @@
+/*
+========================================================
+GPL - Game Programming Library
+by Luan Carlos Nesi (2014-2016)
+https://github.com/libgpl
+========================================================
+
+The MIT License (MIT)
+
+Copyright (c) 2014-2016 Luan Nesi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
 #include "../include/Input.hpp"
 #include "../include/Base.hpp"
 #include "../include/Gizmos.hpp"
@@ -47,8 +76,7 @@ void Input::mouseSnap(int x, int y)
 	this->snapDistanceY = y;
 }
 
-
-// ---------- KEYBOARD ---------- 
+// ---------- KEYBOARD ----------
 bool Input::isPressed(KEY _key)
 {
 	if (sf::Keyboard::isKeyPressed(_key))
@@ -72,7 +100,6 @@ bool Input::isUp(KEY _key)
 	return false;
 }
 
-
 bool Input::isDown(KEY _key)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(_key)) && !keyDown.at(_key))
@@ -87,8 +114,7 @@ bool Input::isDown(KEY _key)
 	return false;
 }
 
-
-// ---------- MOUSE ---------- 
+// ---------- MOUSE ----------
 bool Input::isPressed(MOUSE _mouse)
 {
 	if (sf::Mouse::isButtonPressed(_mouse))
@@ -112,8 +138,7 @@ bool Input::isUp(MOUSE _mouse)
 	return false;
 }
 
-bool Input::isDown(MOUSE _mouse){
-
+bool Input::isDown(MOUSE _mouse) {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button(_mouse)) && !buttonDown.at(_mouse))
 	{
 		buttonDown.at(_mouse) = true;
@@ -126,16 +151,15 @@ bool Input::isDown(MOUSE _mouse){
 	return false;
 }
 
-
-// ---------- JOYSTICK ---------- 
+// ---------- JOYSTICK ----------
 bool Input::isPressed(JOYSTICK _joystick, PLAYER _player)
 {
 	////system("cls");
 	////cout << "X: " << sf::Joystick::getAxisPosition(_player, sf::Joystick::X) << endl;
 	////cout << "Y: " << sf::Joystick::getAxisPosition(_player, sf::Joystick::Y) << endl;
 
-	int X = sf::Joystick::getAxisPosition(_player, sf::Joystick::PovX);
-	int Y = sf::Joystick::getAxisPosition(_player, sf::Joystick::PovY);
+	int X = (int)sf::Joystick::getAxisPosition(_player, sf::Joystick::PovX);
+	int Y = (int)sf::Joystick::getAxisPosition(_player, sf::Joystick::PovY);
 	if (_joystick == JOYSTICK::UP)
 	{
 		if (Y < -1)
@@ -182,6 +206,7 @@ bool Input::isUp(JOYSTICK _joystick, PLAYER _player)
 		joyUp.at(_player).at(_joystick) = true;
 		return true;
 	}
+	return false;
 }
 
 bool Input::isDown(JOYSTICK _joystick, PLAYER _player)
@@ -200,7 +225,7 @@ bool Input::isDown(JOYSTICK _joystick, PLAYER _player)
 
 int Input::getMouseY()
 {
-	int space = (base->getWindow()->getSize().y - sf::Mouse::getPosition(*base->getWindow()).y) / snapDistanceY;
+	int space = (sf::Mouse::getPosition(*base->getWindow()).y) / snapDistanceY;
 	return space * snapDistanceY;
 }
 

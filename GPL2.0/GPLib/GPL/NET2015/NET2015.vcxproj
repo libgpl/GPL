@@ -42,12 +42,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\lib\NET2015</OutDir>
+    <OutDir>..\..\lib\NET2015\</OutDir>
     <TargetExt>_d.lib</TargetExt>
     <TargetName>gpl</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\..\lib\NET2015</OutDir>
+    <OutDir>..\..\lib\NET2015\</OutDir>
     <TargetName>gpl</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -93,6 +93,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\include\SimuladorIA\Resource.cpp" />
     <ClCompile Include="..\..\src\Base.cpp" />
     <ClCompile Include="..\..\src\Button.cpp" />
     <ClCompile Include="..\..\src\Collision.cpp" />
@@ -120,8 +121,13 @@
     <ClInclude Include="..\..\include\Ease.hpp" />
     <ClInclude Include="..\..\include\File.hpp" />
     <ClInclude Include="..\..\include\main.hpp" />
-    <ClInclude Include="..\..\include\MyGame.hpp" />
+    <ClInclude Include="..\..\include\GPLGame" />
     <ClInclude Include="..\..\include\Parallax.h" />
+    <ClInclude Include="..\..\include\SimIA" />
+    <ClInclude Include="..\..\include\SimuladorIA\Agent.h" />
+    <ClInclude Include="..\..\include\SimuladorIA\Environment.h" />
+    <ClInclude Include="..\..\include\SimuladorIA\mapgenerator.hpp" />
+    <ClInclude Include="..\..\include\SimuladorIA\Resource.h" />
     <ClInclude Include="..\..\include\SplashScreen.hpp" />
     <ClInclude Include="..\..\include\Timer.hpp" />
     <ClInclude Include="..\..\include\Window.hpp" />

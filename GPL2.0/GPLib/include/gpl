@@ -28,6 +28,7 @@
 //  File			Ok		2.1
 //	Physics			
 //	Scene			Ver necessidade de implementação =D
+//  Ease			Ok		3.0
 //	Métodos de retorno como const, para nao serem mudados.
 Sobrecarregar o operador << para escrita
 //////////////////////////////////////////////////////////////
@@ -38,7 +39,7 @@ Sobrecarregar o operador << para escrita
 // GPL2: Cabeçalho de configuração automática das bibliotecas para o Visual Studio
 
 // Não abrir a janela do console
-#pragma comment(linker, "/subsystem:windows /ENTRY:mainCRTStartup")
+//	#pragma comment(linker, "/subsystem:windows /ENTRY:mainCRTStartup")
 
 // Não emitir erro de compilação por falta de atualização do Windows
 // desabilita o linker incremental
@@ -65,7 +66,7 @@ Sobrecarregar o operador << para escrita
 #endif	
 
 #include "Window.hpp"
-#include "Game.hpp"
+//#include "Game.hpp"
 #include "Text.hpp"
 #include "Input.hpp"
 #include "Sprite.hpp"
@@ -77,11 +78,11 @@ Sobrecarregar o operador << para escrita
 #include "Timer.hpp"
 #include "Parallax.hpp"
 #include "Button.hpp"
-#include "MyGame.hpp"
 #include "Ease.hpp"
+//#include "MyGame.hpp"
 
 static Gizmos *gizmos = new Gizmos();
-static Ease *ease = new Ease();
+//static Ease *ease = new Ease();
 
 
 //#include "Input.hpp"

@@ -1,4 +1,33 @@
-/* 
+/*
+========================================================
+GPL - Game Programming Library
+by Luan Carlos Nesi (2014-2016)
+https://github.com/libgpl
+========================================================
+
+The MIT License (MIT)
+
+Copyright (c) 2014-2016 Luan Nesi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+/*
  * File:   collision.h
  * Authors: Nick Koirala (original version), ahnonay (SFML2 compatibility)
  *
@@ -37,39 +66,39 @@ it freely, subject to the following restrictions:
 #define COLLISION_H
 
 namespace Collision {
-    //////
-    /// Test for a collision between two sprites by comparing the alpha values of overlapping pixels
-    /// Supports scaling and rotation
-    /// AlphaLimit: The threshold at which a pixel becomes "solid". If AlphaLimit is 127, a pixel with
-    /// alpha value 128 will cause a collision and a pixel with alpha value 126 will not.
-    /// 
-    /// This functions creates bitmasks of the textures of the two sprites by
-    /// downloading the textures from the graphics card to memory -> SLOW!
-    /// You can avoid this by using the "CreateTextureAndBitmask" function
-    //////
-    bool PixelPerfectTest(const sf::Sprite& Object1 ,const sf::Sprite& Object2, sf::Uint8 AlphaLimit = 0);
+	//////
+	/// Test for a collision between two sprites by comparing the alpha values of overlapping pixels
+	/// Supports scaling and rotation
+	/// AlphaLimit: The threshold at which a pixel becomes "solid". If AlphaLimit is 127, a pixel with
+	/// alpha value 128 will cause a collision and a pixel with alpha value 126 will not.
+	///
+	/// This functions creates bitmasks of the textures of the two sprites by
+	/// downloading the textures from the graphics card to memory -> SLOW!
+	/// You can avoid this by using the "CreateTextureAndBitmask" function
+	//////
+	bool PixelPerfectTest(const sf::Sprite& Object1, const sf::Sprite& Object2, sf::Uint8 AlphaLimit = 0);
 
-    //////
-    /// Replaces Texture::loadFromFile
-    /// Load an imageFile into the given texture and create a bitmask for it
-    /// This is much faster than creating the bitmask for a texture on the first run of "PixelPerfectTest"
-    /// 
-    /// The function returns false if the File could not be opened for some reason
-    //////
-    bool CreateTextureAndBitmask(sf::Texture &LoadInto, const std::string& Filename);
+	//////
+	/// Replaces Texture::loadFromFile
+	/// Load an imageFile into the given texture and create a bitmask for it
+	/// This is much faster than creating the bitmask for a texture on the first run of "PixelPerfectTest"
+	///
+	/// The function returns false if the File could not be opened for some reason
+	//////
+	bool CreateTextureAndBitmask(sf::Texture &LoadInto, const std::string& Filename);
 
-    //////
-    /// Test for collision using circle collision dection
-    /// Radius is averaged from the dimensions of the sprite so
-    /// roughly circular objects will be much more accurate
-    //////
-    bool CircleTest(const sf::Sprite& Object1, const sf::Sprite& Object2);
+	//////
+	/// Test for collision using circle collision dection
+	/// Radius is averaged from the dimensions of the sprite so
+	/// roughly circular objects will be much more accurate
+	//////
+	bool CircleTest(const sf::Sprite& Object1, const sf::Sprite& Object2);
 
-    //////
-    /// Test for bounding box collision using the Seperating Axis Theorem
-    /// Supports scaling and rotation
-    //////
-    bool BoundingBoxTest(const sf::Sprite& Object1, const sf::Sprite& Object2);
+	//////
+	/// Test for bounding box collision using the Seperating Axis Theorem
+	/// Supports scaling and rotation
+	//////
+	bool BoundingBoxTest(const sf::Sprite& Object1, const sf::Sprite& Object2);
 }
 
 #endif  /* COLLISION_H */

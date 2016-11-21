@@ -1,0 +1,16 @@
+<html>
+<head>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <div id="chart_div"></div>
+  
+  <script type="text/javascript">
+  google.load('visualization', '1', {packages: ['corechart', 'line']});
+    google.setOnLoadCallback(drawChart);
+	
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Epoch');
+      data.addColumn('number', 'ERM');
+
+      data.addRows([

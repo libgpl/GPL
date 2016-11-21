@@ -1,0 +1,140 @@
+<html>
+<head>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <div id="chart_div"></div>
+  
+  <script type="text/javascript">
+  google.load('visualization', '1', {packages: ['corechart', 'line']});
+    google.setOnLoadCallback(drawChart);
+	
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Epoch');
+      data.addColumn('number', 'ERM');
+
+      data.addRows([
+
+      ]);
+
+      var options = {
+        title: 'Erro Medio Quadrado',
+		viewWindowMode: 'explicit',
+		format: 'none',
+		backgroundColor:  {
+        stroke: '#FF0000',
+		strokeWidth: 0,
+		fill: '#dadada'
+     },
+chartArea: {
+    left: 40,
+    top: 40,
+    width: 840,
+    height: 420,
+	backgroundColor: {
+		fill: '#fff',
+        stroke: '#000',
+		strokeWidth: 1,
+	}
+},
+		hAxis: {
+//        viewWindow: {
+	//		max:15,
+      //      min:0
+       // },
+		titleTextStyle:
+        {
+           italic: false,
+        },
+		textStyle:
+        {
+           fontStyle: 'normal',
+           italic: false,
+           fontSize : 10,
+        },
+        title: 'Epochs',
+			gridlines: {
+				count: 5,
+			},
+		},
+		legend: 'none',
+        vAxis: {
+//        viewWindow: {
+	//		max:40,
+      //      min:2
+     //   },
+		titleTextStyle:
+        {
+           italic: false,
+        },
+		textStyle:
+        {
+           fontStyle: 'normal',
+           italic: false,
+           fontSize : 10,
+        },
+		title: 'Error',
+			gridlines: {
+				count: 5
+			},
+        },
+//		  minValue: 0,
+//		  maxValue: 10,
+		  width: 900,
+        height: 500,
+		crosshair: { trigger: 'both' } // Display crosshairs on focus and selection.
+		};
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+		
+	google.visualization.events.addListener(chart, 'ready', function () {
+        document.getElementById('png').outerHTML = '<center><a href="' + chart.getImageURI() + '" download="teste download.png"><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat-2/32/arrow-download-icon.png"></a></center>	';
+      });	
+
+		chart.draw(data, options);
+
+		}
+	</script>
+		
+</head>
+
+
+<body style="border:#000000 solid 0px; padding-top:50px; margin: auto; width:900px; height:600px;">
+<div id="linechart_material"></div>
+</p></p></p></p>
+<center>
+<div>
+	<input id="test" style="border:#000000 solid 1px; width:32px; height:32px" type="image" src="http://icdn.pro/images/en/l/a/latex-tex-file-icone-7275-96.png"/>
+</div>
+<div style="border:#000000 solid 1px; width:32px; height:32px;" id="png"></div>
+
+<textarea style="z-index: -1; opacity:0">
+\begin{figure}[htb!H]
+\caption{Experimento }
+\label{fig:lagel_figura}
+\begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=5in]{nome_da_figura}
+        \fonte{\centering Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+
+</textarea>
+
+  <script type="text/javascript">
+  
+  document.querySelector('input').addEventListener('mouseup', function(ev) {
+  var test = document.querySelector('textarea');
+  var bkp = test.value;
+    
+  test.select();
+  document.execCommand('cut');
+  test.value = bkp;
+});
+</script>
+
+</center>
+
+</body>
+</html>
+

@@ -1,3 +1,32 @@
+/*
+========================================================
+GPL - Game Programming Library
+by Luan Carlos Nesi (2014-2016)
+https://github.com/libgpl
+========================================================
+
+The MIT License (MIT)
+
+Copyright (c) 2014-2016 Luan Nesi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
 #pragma once
 
 #include "../include/Sprite.hpp"
@@ -8,7 +37,6 @@ using namespace Collision;
 
 Sprite::Sprite(void) :x(0), currentFrame(0), animationTime(30), alpha(255), mirror(false), x_pivot(0), y_pivot(0)
 {
-
 	y = 0;// base->getWindow()->getSize().y;
 }
 
@@ -22,13 +50,14 @@ void Sprite::load(std::string Filename)
 	frames.push_back(new sf::Texture());
 
 	std::string File = "./assets/sprites/" + Filename;
-	if(!(*frames.back()).loadFromFile(File))
-	{
-		std::string tete = "Arquivo do sprite '"+Filename+"' não encontrado";
-		panel->debug("ERROR",tete);
-		text.load("../../../../GPLib/resources/calibri.ttf");
-		frames.pop_back();
-	}
+	if (!(*frames.back()).loadFromFile(File))
+		if (!(*frames.back()).loadFromFile(File))
+		{
+			std::string tete = "Arquivo do sprite '" + Filename + "' não encontrado";
+			panel->debug("ERROR", tete);
+			text.load("../../../../GPLib/resources/calibri.ttf");
+			frames.pop_back();
+		}
 }
 
 void Sprite::loadSpriteSheet(std::string Filename, int qtdX, int qtdY)
@@ -38,7 +67,6 @@ void Sprite::loadSpriteSheet(std::string Filename, int qtdX, int qtdY)
 
 	int FrameSizeX = temp.getResX() / qtdX;
 	int FrameSizeY = temp.getResY() / qtdY;
-
 
 	std::string File = "./assets/sprites/" + Filename;
 
@@ -61,11 +89,11 @@ void Sprite::load(std::string Filename, unsigned int x, unsigned int y, unsigned
 	frames.push_back(new sf::Texture());
 
 	std::string File = "./assets/sprites/" + Filename;
-	if(!(*frames.back()).loadFromFile(File, sf::IntRect(x, y, width, height)))
+	if (!(*frames.back()).loadFromFile(File, sf::IntRect(x, y, width, height)))
 	{
-		std::string tete = "Arquivo do sprite '"+Filename+"' não encontrado";
-		panel->debug("ERROR",tete);
-	}	
+		std::string tete = "Arquivo do sprite '" + Filename + "' não encontrado";
+		panel->debug("ERROR", tete);
+	}
 }
 
 int Sprite::getResX() const
@@ -98,14 +126,11 @@ int Sprite::getFrame()
 	return currentFrame;
 }
 
-
 void Sprite::draw(int x, int y, float scaleX, float scaleY, int pivotX, int pivotY, unsigned int alpha, unsigned int angle, bool edge)
 {
 	// if frames are loaded
 	if (frames.size() > 0)
 	{
-
-
 		// Aplica os limites inferior e superior para alpha (0-255)
 		this->alpha = (this->alpha < 0) ? 0 : alpha;
 		this->alpha = (this->alpha > 255) ? 255 : alpha;
@@ -116,7 +141,7 @@ void Sprite::draw(int x, int y, float scaleX, float scaleY, int pivotX, int pivo
 
 		timer = clk.getElapsedTime();
 
-		if (timer.asMilliseconds() > animationTime)
+		if ((int)timer.asMilliseconds() > (int)animationTime)
 		{
 			currentFrame++;
 			if (currentFrame == frames.size()) currentFrame = 0;
@@ -127,13 +152,13 @@ void Sprite::draw(int x, int y, float scaleX, float scaleY, int pivotX, int pivo
 		{
 			this->x_pivot = pivotX;
 			this->y_pivot = pivotY;
-			_sprite.setOrigin(x_pivot, y_pivot);
+			_sprite.setOrigin((float)x_pivot, (float)y_pivot);
 		}
 
 		if (this->x_scale != scaleX || this->y_scale != scaleY)
 		{
-			this->x_scale = scaleX;
-			this->y_scale = scaleY;
+			this->x_scale = (int)scaleX;
+			this->y_scale = (int)scaleY;
 			_sprite.setScale(scaleX, scaleY);
 		}
 
@@ -156,7 +181,7 @@ void Sprite::draw(int x, int y, float scaleX, float scaleY, int pivotX, int pivo
 		{
 			this->x = x;
 			this->y = y;
-			_sprite.setPosition(sf::Vector2f((float)x, base->getWindow()->getSize().y - (float)y));
+			_sprite.setPosition(sf::Vector2f((float)x, (float)y));
 		}
 
 		if (edge)
@@ -168,7 +193,7 @@ void Sprite::draw(int x, int y, float scaleX, float scaleY, int pivotX, int pivo
 			retangulo.setPosition(_sprite.getPosition().x, _sprite.getPosition().y);
 			retangulo.setRotation(_sprite.getRotation());
 			retangulo.setScale(scaleX, scaleY);
-			retangulo.setOrigin(x_pivot, y_pivot);
+			retangulo.setOrigin((float)x_pivot, (float)y_pivot);
 			base->getWindow()->draw(retangulo);
 		}
 
@@ -179,7 +204,6 @@ void Sprite::draw(int x, int y, float scaleX, float scaleY, int pivotX, int pivo
 		text.draw(filename, x, y, 10, 255, 0, 0);
 	}
 }
-
 
 //void Sprite::draw(int x, int y, bool mirror, unsigned int alpha, unsigned int angle, bool edge)
 //{
@@ -268,9 +292,9 @@ bool Sprite::collides(Sprite _sprite)
 	int x2 = _sprite.x;
 	int y2 = _sprite.y;
 
-	if(BoundingBoxTest(this->_sprite,_sprite._sprite))
+	if (BoundingBoxTest(this->_sprite, _sprite._sprite))
 	{
-		return PixelPerfectTest(this->_sprite,_sprite._sprite);
+		return PixelPerfectTest(this->_sprite, _sprite._sprite);
 	}
 	else
 	{

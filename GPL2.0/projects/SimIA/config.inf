@@ -1,0 +1,28 @@
+[Carga]
+capacidade máxima=10
+capacidade minima=5
+
+[Energia]
+gasto=1
+máxima=200
+minima=300
+
+[Recursos]
+aumento gasto R1=1
+aumento gasto R2=1
+aumento gasto R3=1
+aumento gasto R4=1
+custo R4=4
+custo R3=3
+custo R2=2
+custo R1=1
+
+ [Bases]
+quantidade R4=5
+quantidade R3=5
+quantidade R2=5
+quantidade R1=5
+
+ máximo=150
+ mínimo=25
+

@@ -1,0 +1,4 @@
+ [senhas]
+
+ Level 1=Pa$$w0rd
+
