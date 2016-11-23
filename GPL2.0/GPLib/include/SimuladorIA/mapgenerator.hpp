@@ -201,12 +201,11 @@ public:
 
 	void OnDrawGizmos()
 	{
-
 		//vector<Coord> ninhos;
 
 		for (int x = 0; x < width; x++)
 		{
-			int xx = (x + 1)*resX;
+			int xx = (x)*resX;
 			for (int y = 0; y < height; y++)
 			{
 				int py = ((y)* resY);

@@ -64,6 +64,8 @@ public:
 		return name;
 	}
 	virtual void run() = 0;
+	virtual void setup() = 0;
+	virtual void finish() = 0;
 };
 
 
@@ -186,6 +188,7 @@ public:
 
 		bases.insert(pair<string, Base_*>(myAI->getName(), new Base_(myAI->getName(), mapa->placeNest(myAI->getName(),distance))));
 		brains->push_back(myAI);
+		brains->back()->setup();
 	}
 
 	~Environment()
@@ -222,8 +225,9 @@ public:
 		return p;
 	}
 
-	void move(string name, int id, DIRECTION D)
+	bool move(string name, int id, DIRECTION D)
 	{
+		bool retorno = false;
 		Agent *a = bases.at(name)->agents->at(id);
 		if (a->getVivo())
 		{
@@ -236,6 +240,7 @@ public:
 				{
 					a->y++;
 					a->vida -= atoi(File::GetValue("gasto", "Energia", "config.inf").c_str());
+					retorno = true;
 				}
 			}
 			else if (D == UP_ && (y - 1) >= 0)
@@ -244,6 +249,7 @@ public:
 				{
 					a->y--;
 					a->vida -= atoi(File::GetValue("gasto", "Energia", "config.inf").c_str());
+					retorno = true;
 				}
 			}
 			else if (D == RIGHT_ && (x + 1) < mapa->width)
@@ -252,6 +258,7 @@ public:
 				{
 					a->x++;
 					a->vida -= atoi(File::GetValue("gasto", "Energia", "config.inf").c_str());
+					retorno = true;
 				}
 			}
 			else if (D == LEFT_ && (x - 1) >= 0)
@@ -260,6 +267,7 @@ public:
 				{
 					a->x--;
 					a->vida -= atoi(File::GetValue("gasto", "Energia", "config.inf").c_str());
+					retorno = true;
 				}
 			}
 			if (a->getVida() <= 0)
@@ -293,6 +301,7 @@ public:
 				}
 			}
 		}
+		return retorno;
 	}
 
 	void draw()
@@ -308,7 +317,7 @@ public:
 			{
 				if (a->getVivo())
 				{
-					(*it).second->avatar.draw((a->getX()+1) * 10, (a->getY()) * 10);
+					(*it).second->avatar.draw((a->getX()) * 10, (a->getY()) * 10);
 				}
 			}
 		}
@@ -328,6 +337,10 @@ public:
 		}
 		else
 		{
+			for each (AI *var in *brains)
+			{
+				var->finish();
+			}
 			finish();
 		}
 	}
