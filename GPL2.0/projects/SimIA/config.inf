@@ -3,7 +3,7 @@ capacidade máxima=10
 capacidade minima=5
 
 [Energia]
-gasto=1
+gasto=0
 máxima=200
 minima=300
 
